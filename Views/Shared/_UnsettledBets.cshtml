@@ -1,0 +1,345 @@
+﻿<div x-data="mybets.UI.mybetsHandler">
+<div class="bg-white rounded-b-3xl p-1" x-show="$store.slipTab.t === 2" :class="{ 'pointer-events-none' : loading }" x-intersect="load">
+    @* all/cashout bets select *@
+    <div class="flex border-b border-light-300 font-bold text-sm mb-1.5">
+        <a class="inline-block px-4 py-2 cursor-pointer" :class="filterBets === 0 ? 'text-brand border-b-4 border-brand -mb-px' : 'text-light-400'" @@click="filterBets = 0">All Bets</a>
+        <a class="inline-block px-4 py-2 cursor-pointer" :class="filterBets === 1 ? 'text-brand border-b-4 border-brand -mb-px' : 'text-light-400'" @@click="filterBets = 1">Cashout <span class="font-normal" x-text="`(${model.Bets.filter(x => x.CashOutStatus === 1).length})`" x-show="filterBets === 1"></span></a>
+        
+    </div>
+    <div class="text-light-300 text-center px-4 py-12" x-show="filterBets === 0 && $store.betslip.headerCounter.openBets === 0">No Bets</div>
+    <div class="text-light-300 text-center px-4 py-12" x-show="filterBets === 1 && model.Bets.filter(x => x.CashOutStatus === 1).length === 0">No Bets Available</div>
+    <template x-for="item in model.Bets.sort((a, b) => { var da = new Date(a.AcceptanceDateUtc), db = new Date(b.AcceptanceDateUtc); return db - da; })" :key="item.Id">
+        <div class="mb-3 last:mb-0 text-sm relative border-2 border-light-200 rounded-3xl p-1.5" x-show="!(item.CashOutStatus === 0 && filterBets === 1)" x-data="{ open: item.CashOutStatus === 1 }">
+            <div class="absolute inset-0 z-10 bg-white/50 cursor-wait" x-show="betLoading[item.Id] || cashoutLoading[item.Id]"></div>
+            <div>
+                <div class="flex items-start pl-3 pr-2 py-1 bg-light-200 rounded-full cursor-pointer" @*:class="{ 'cursor-pointer': item.CashOutStatus === 0 }"*@ @@click="open = !open">
+                    <div>
+                        <span class="whitespace-nowrap" x-text="item.BetDescription.replace('(', ' (')"></span>
+                    </div>
+                    <div class="text-right ml-auto">
+                        <span class="text-light-400 mr-1" x-show="item.CashOutStatus === 1 || open">ID:</span>
+                        <span class="font-mono font-bold whitespace-nowrap" x-text="item.Id" x-show="item.CashOutStatus === 1 || open"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-1 text-light-400 inline-block" :class="open ? 'rotate-180 -mt-1' : '-mt-px'" @*x-show="item.CashOutStatus === 0"*@>
+                            <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-right pr-2 mt-1">
+                    <span class="text-light-400 mr-1">Date</span>
+                    <span x-text="common.dateFormat(item.DatePlaced)"></span>
+                </div>
+            </div>
+            <template x-if="item.CashOutStatus === 0 && !open">
+                <div class="leading-tight tracking-tight font-bold px-1 mt-2" x-text="(item.BetDescriptionTeams.slice(-1) === '/' ? item.BetDescriptionTeams.slice(0, -1) : item.BetDescriptionTeams) + ' [' + item.Id + ']'"></div>@* Auxiliary bet ID *@
+            </template>
+            <template x-if="open">
+                <div x-data="{ details: { SportEventWithSelectionList: [], CanCashoutResponse: null }, previousSportEventId: 0, detailsInterval: null  }" 
+                    x-intersect.once="details = await getDetails(item.Id)" 
+                    x-intersect:enter="detailsInterval = setInterval(async function(){ console.log('Reloading: ' + item.Id); details = await getDetails(item.Id); }, duration)" 
+                    x-intersect:leave="clearInterval(detailsInterval)">
+                    <div class="mb-4">
+                    <template x-for="detail in details.SportEventWithSelectionList.sort((a, b) => { var da = new Date(a.EventDateWithOffset), db = new Date(b.EventDateWithOffset); return da-db; })">
+                        <div x-data="{ eventChanged: previousSportEventId !== detail.SportEventId,  }" :class="{ 'border-t-2 border-light-100 [&:nth-child(2)]:border-t-0': eventChanged }">
+                            <div class="relative pt-2" x-data="{ changeSportEventId: function(){ previousSportEventId = detail.SportEventId; }() }">
+                                <template x-if="detail.IsCustomBetSelection && eventChanged">
+                                    <div class="mb-2">
+                                        <div class="flex items-center -ml-1 bg-light-100 rounded-full">
+                                            <div class="pl-2 text-sm text-brand-dark font-bold flex-1 flex items-center" x-data="{ ll: details.SportEventWithSelectionList.map(x => x.SportEventId === detail.SportEventId) }">
+                                                <span class="bg-brand-dark rounded-full text-light-100 w-5 h-5 text-xxs font-bold inline-flex items-center justify-center mr-1">BB</span>
+                                                Bet Builder
+                                                @* Lost *@
+                                                <template x-if="ll.some(x => x.FirstStatus === -1)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-indicator -mt-px">
+                                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                                @* Won *@
+                                                <template x-if="ll.every(x => x.FirstStatus === 1)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-success">
+                                                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                                @* Void *@
+                                                <template x-if="ll.some(x => x.FirstStatus === -2)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-brand-light -mt-px">
+                                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                            </div>
+                                            <div>
+                                                <a class="inline-block min-w-16 leading-none bg-light-200 rounded-full px-4 py-3 text-sm text-brand-dark font-bold text-right" x-text="common.parse(detail.CustomBetOddValue).output"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template x-if="eventChanged">
+                                    <div x-data="{ ss: details.CanCashoutResponse !== null && Object.keys(details.CanCashoutResponse.EventScoreMetaInfoList).length > 0 && detail.SportEventId in details.CanCashoutResponse.EventScoreMetaInfoList ? details.CanCashoutResponse.EventScoreMetaInfoList[detail.SportEventId.toString()] : null }">
+                                        <div class="flex items-start relative cursor-pointer group" @@click="parent.postMessage({ sportEventRedirect: detail.sporteventId, eventhasLive: (detail.EventHasStarted.toLowerCase() === 'true') }, '*')">
+                                            @* Auxiliary *@<div x-text="'['+detail.SportEventId+']'" class="text-xxxs text-light-300 absolute -top-1 right-0"></div>@* /Auxiliary *@
+                                            <img class="inline w-4 h-4 mt-0.5 mr-1" :src="`icons/game${detail.LineDetailGameId}.svg`" />
+                                            <div class="flex flex-wrap leading-tight tracking-tight group-hover:text-brand">
+                                                <span class="whitespace-nowrap" x-text="detail.EventLocalizedTeam1"></span>
+                                                <span class="mx-1">-</span>
+                                                <span class="whitespace-nowrap" x-text="detail.EventLocalizedTeam2"></span>
+                                            </div>
+                                        </div>
+                                        <div class="px-1 mb-2">
+                                            <div class="flex items-end">
+                                                <div class="flex-1 text-xs text-light-400 text-ellipsis overflow-hidden whitespace-nowrap" x-text="detail.EventLocalizedLeagueName" :title="detail.EventLocalizedLeagueName.length > 30 && detail.EventLocalizedLeagueName"></div>
+                                                <div class="text-sm leading-4 text-right" x-text="common.dateFormat(detail.EventDateWithOffset, 'short')"></div>
+                                            </div>
+                                            @* Scores *@
+                                            <template x-if="ss !== null">
+                                                <div class="text-brand-light font-bold" x-show="scoreMeta(ss, detail.LineDetailGameId).score !== ''">
+                                                    <template x-if="detail.LineDetailGameId === 1">
+                                                        <span x-html="`${scoreMeta(ss, detail.LineDetailGameId).matchminute}&rsquo; ${scoreMeta(ss, detail.LineDetailGameId).score}`" ></span>
+                                                    </template>
+                                                    <template x-if="detail.LineDetailGameId === 2">
+                                                        <span x-html="`${scoreMeta(ss, detail.LineDetailGameId).quarter} ${scoreMeta(ss, detail.LineDetailGameId).timeremaining} ${scoreMeta(ss, detail.LineDetailGameId).score}`"></span>
+                                                    </template>
+                                                    <template x-if="detail.LineDetailGameId === 3">
+                                                        <span x-html="`${scoreMeta(ss, detail.LineDetailGameId).setscore} [${scoreMeta(ss, detail.LineDetailGameId).gamescore}]`"></span>
+                                                    </template>
+                                                    <template x-if="detail.LineDetailGameId === 106">
+                                                        <span x-html="`${scoreMeta(ss, detail.LineDetailGameId).quarter} ${scoreMeta(ss, detail.LineDetailGameId).matchminute}&rsquo; ${scoreMeta(ss, detail.LineDetailGameId).score}`"></span>
+                                                    </template>
+                                                    <template x-if="detail.LineDetailGameId !== 1 && detail.LineDetailGameId !== 2 && detail.LineDetailGameId !== 3 && detail.LineDetailGameId !== 106">
+                                                        <span x-html="scoreMeta(ss, detail.LineDetailGameId).score"></span>
+                                                    </template>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                                <div class="pl-1 mb-2 relative">
+                                    <div class="flex items-end">
+                                        <div class="flex-1 text-brand-dark">
+                                            <div class="text-sm leading-none">
+                                                <span x-text="detail.SelectionValueMarketNameFromTemplate"></span> 
+                                                @*<span class="border border-indicator rounded-full px-1 ml-1 text-indicator text-xxxs align-middle" x-show="detail.EventHasLive">LIVE</span>*@
+                                                <svg version="1.1" x="0px" y="0px" viewBox="0 0 512 256" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="w-8 h-4 inline text-indicator" x-show="detail.EventHasLive">
+                                                    <path fill="none" stroke="currentColor" stroke-width="12" d="M 400.6,218.4 H 111.4 c -53.7,0 -97.2,-43.5 -97.2,-97.2 v 0 C 14.2,67.499999 57.7,24 111.4,24 h 289.3 c 53.7,0 97.2,43.499999 97.2,97.2 v 0 c -0.1,53.6 -43.6,97.2 -97.3,97.2 z" />
+                                                    <path fill="currentColor" d="m 161.7,172.1 h -51.8 c -4.8,0 -8.7,-3.9 -8.7,-8.7 V 76.999999 c 0,-5 4.2,-8.9 9.2,-8.6 4.6,0.3 8.1,4.3 8.1,9 V 154.9 c 0,0 0,0 0,0 h 42.9 c 4.6,0 8.7,3.5 9,8.1 0.2,4.9 -3.8,9.1 -8.7,9.1 z m 43.2,-8.7 c 0,5 -4.2,8.9 -9.2,8.6 -4.6,-0.3 -8.1,-4.3 -8.1,-9 V 77.199999 c 0,-4.6 3.5,-8.7 8.1,-9 5,-0.3 9.2,3.7 9.2,8.6 z M 316.7,80.099999 282.1,166.6 c -1.3,3.3 -4.5,5.4 -8,5.4 -3.5,0 -6.7,-2.2 -8,-5.4 L 231.5,80.099999 c -1.8,-4.4 0.4,-9.5 4.8,-11.3 4.4,-1.8 9.5,0.4 11.3,4.8 L 274.1,139.9 c 0,0 0.1,0 0.1,0 l 26.5,-66.300001 c 0.3,-0.8 0.7,-1.5 1.2,-2.2 2.5,-3.2 6.6,-4.1 10,-2.7 2.1,0.9 3.8,2.5 4.7,4.6 1,2.3 1,4.7 0.1,6.8 z M 360.7,111.5 h 42.9 c 4.6,0 8.7,3.5 9,8.1 0.3,5 -3.7,9.2 -8.6,9.2 h -43.2 c 0,0 0,0 0,0 v 25.9 c 0,0 0,0 0,0 H 404 c 5,0 8.9,4.2 8.6,9.2 -0.3,4.6 -4.3,8.1 -9,8.1 H 352 c -4.8,0 -8.7,-3.9 -8.7,-8.7 V 76.899999 c 0,-4.8 3.9,-8.7 8.7,-8.7 h 51.8 c 5,0 8.9,4.2 8.6,9.2 -0.3,4.6 -4.3,8.1 -9,8.1 h -42.9 c 0,0 0,0 0,0 L 360.7,111.5 c -0.1,0 -0.1,0 0,0 z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <span x-text="detail.SelectionValueOddNameFromTemplate"></span>
+                                                <template x-if="detail.LineDetailBanker">
+                                                    <span class="text-base text-brand-light font-bold">B</span>
+                                                </template>
+                                                @* Lost *@
+                                                <template x-if="detail.FirstStatus === -1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-indicator -mt-px">
+                                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                                @* Won *@
+                                                <template x-if="detail.FirstStatus === 1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-success">
+                                                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                                @* Void *@
+                                                <template x-if="detail.FirstStatus === -2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline w-4 h-4 text-brand-light -mt-px">
+                                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <template x-if="!detail.IsCustomBetSelection">
+                                                <a class="inline-block min-w-16 leading-none bg-light-200 rounded-full px-4 py-3 text-sm text-brand-dark font-bold text-right" x-text="common.parse(detail.SelectionValueOddValue).output"></a>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    </div>
+                    <div class="text-xs">
+                        <div class="bg-light-100 flex items-center px-2 pt-1 pb-0.5 text-brand-dark mb-px">
+                            <div class="flex-grow">
+                                Amount
+                                <template x-if="details.IsFreeBet">
+                                    <span class="text-brand font-bold inline-flex items-center">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2229.000000 2229.000000" preserveAspectRatio="xMidYMid meet" class="inline w-5 h-5 ml-2 mr-1">
+                                            <g transform="translate(0.000000,2229.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                                <path d="M3315 19100 c-398 -39 -777 -266 -1002 -600 -36 -53 -111 -202 -141 -280 -34 -86 -60 -206 -72 -319 -14 -144 -14 -13518 0 -13662 33 -329 192 -640 436 -854 195 -170 394 -270 654 -327 l105 -23 7870 0 c7523 0 7874 1 7965 18 474 89 853 423 999 880 69 217 64 64 68 2119 l4 1858 -2933 3 -2933 2 -80 22 c-224 60 -398 171 -530 336 -108 135 -185 308 -204 459 -6 43 -11 1014 -13 2413 l-3 2340 22 85 c57 223 169 401 336 535 132 105 304 183 453 205 45 6 1106 10 2977 10 l2908 0 -4 1813 c-4 2005 1 1857 -68 2074 -145 453 -515 782 -989 880 -81 16 -491 17 -7915 19 -4307 1 -7866 -2 -7910 -6z m870 -3263 c121 -68 240 -135 265 -149 25 -14 135 -76 245 -138 110 -62 306 -172 435 -245 384 -217 985 -556 1295 -730 22 -12 162 -91 310 -175 233 -131 779 -438 855 -481 14 -7 41 -23 60 -35 19 -11 170 -97 335 -189 165 -92 316 -177 335 -188 19 -11 141 -79 270 -152 129 -72 253 -142 275 -155 163 -92 284 -160 298 -165 9 -4 46 15 94 48 43 29 184 125 313 212 129 87 316 213 415 280 99 67 284 191 410 277 127 85 306 206 399 269 93 63 293 197 445 300 359 241 977 658 1396 941 110 74 304 205 430 290 127 85 278 187 337 227 60 40 115 71 123 69 15 -3 -26 -66 -409 -632 -67 -98 -128 -189 -136 -202 -8 -13 -83 -124 -166 -246 -83 -123 -226 -335 -319 -473 -92 -137 -210 -311 -260 -385 -98 -144 -299 -442 -533 -790 -80 -118 -159 -235 -176 -260 -17 -25 -35 -53 -41 -62 -5 -9 -60 -90 -121 -180 -61 -90 -159 -235 -219 -323 -59 -88 -122 -180 -139 -205 -17 -25 -35 -53 -41 -62 -5 -9 -46 -70 -91 -135 -44 -65 -122 -180 -174 -256 l-93 -139 26 -51 c27 -54 55 -104 135 -242 25 -44 56 -98 68 -120 28 -50 280 -498 308 -546 12 -20 67 -119 124 -220 56 -101 114 -204 129 -229 38 -65 62 -108 93 -165 15 -27 75 -133 132 -235 57 -102 109 -194 115 -205 7 -11 28 -48 47 -81 20 -34 94 -165 164 -290 71 -126 137 -245 149 -264 20 -35 276 -490 318 -565 74 -134 290 -515 305 -540 10 -16 28 -48 40 -70 167 -299 264 -472 270 -480 4 -5 21 -35 38 -65 33 -60 280 -500 317 -565 114 -198 163 -290 159 -297 -8 -12 -37 -10 -59 6 -11 7 -45 27 -75 43 -59 32 -649 364 -715 403 -22 12 -130 73 -240 135 -110 61 -218 122 -240 135 -22 13 -58 33 -80 45 -22 12 -123 69 -225 127 -102 57 -225 127 -274 154 -48 27 -105 58 -125 70 -20 11 -149 84 -287 161 -138 78 -297 168 -355 201 -57 33 -196 111 -309 174 -335 188 -760 427 -832 469 -37 22 -212 121 -390 220 -178 100 -341 192 -363 204 -22 12 -148 83 -280 157 -275 155 -296 167 -348 198 -40 24 -58 22 -102 -14 -11 -9 -121 -84 -245 -168 -124 -83 -326 -219 -448 -302 -123 -83 -235 -158 -248 -166 -12 -8 -116 -78 -230 -155 -113 -77 -217 -147 -230 -155 -13 -8 -130 -87 -261 -176 -333 -224 -630 -425 -968 -652 -159 -108 -357 -241 -440 -297 -183 -124 -692 -467 -990 -667 -121 -81 -228 -148 -238 -148 -14 0 -7 16 35 75 29 41 64 93 78 115 27 42 268 401 471 698 68 101 128 191 134 200 5 9 19 31 31 47 27 40 211 310 416 615 91 135 212 315 270 400 57 85 180 268 273 405 93 138 228 338 300 445 72 107 221 328 330 490 109 162 223 331 254 375 31 44 61 87 66 97 6 10 67 102 138 207 l128 189 -35 58 c-30 52 -221 391 -282 499 -45 81 -287 511 -309 550 -58 101 -600 1064 -667 1185 -17 30 -34 60 -38 65 -7 8 -120 210 -225 400 -15 28 -43 77 -63 110 -19 33 -109 193 -199 355 -91 162 -169 300 -173 305 -4 6 -65 114 -135 240 -70 127 -131 235 -135 240 -4 6 -20 33 -36 60 -51 92 -342 611 -368 656 -12 20 -67 119 -124 220 -131 235 -136 243 -144 247 -16 7 -8 42 10 42 9 0 116 -56 237 -123z"/>
+                                                <path d="M15303 13330 c-28 -4 -85 -18 -125 -30 -375 -114 -640 -430 -688 -820 -14 -120 -14 -2614 1 -2735 48 -394 336 -726 719 -827 l85 -23 2740 0 2740 0 85 22 c118 31 272 110 366 187 134 109 220 224 285 380 78 188 73 83 77 1566 3 1348 1 1437 -34 1575 -21 81 -94 233 -149 311 -128 179 -300 300 -530 371 l-90 28 -2715 1 c-1493 1 -2738 -2 -2767 -6z m1990 -1121 c222 -44 393 -136 565 -303 181 -176 286 -378 327 -629 45 -280 -19 -567 -184 -817 -87 -133 -278 -298 -436 -378 -137 -68 -332 -112 -500 -112 -314 0 -599 122 -817 348 -93 97 -136 159 -195 277 -90 180 -128 353 -120 545 6 148 28 249 82 382 59 148 123 246 233 360 154 159 330 263 529 314 184 46 327 50 516 13z"/>
+                                            </g>
+                                        </svg>
+                                        Name
+                                    </span>
+                                </template>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span x-html="currency"></span>
+                                <span x-text="common.parse(details.SumAmountBet).output"></span>
+                            </div>
+                        </div>
+                        <template x-if="details.ShowMaximumTotalOdds">
+                            <div class="bg-light-100 flex px-2 py-0.5 text-brand-dark mb-px">
+                                <div>Odds</div>
+                                <div class="ml-auto text-right" x-text="common.parse(details.MaximumTotalOdds).output"></div>
+                            </div>
+                        </template>
+                        <template x-if="item.SumBonusAmount > 0">
+                            <div class="bg-light-100 flex px-2 py-0.5 text-brand-dark mb-px">
+                                <div>Bonus Amount</div>
+                                <div class="ml-auto text-right">
+                                    <span x-html="currency"></span>
+                                    <span x-text="common.parse(details.SumBonusAmount).output"></span>
+                                </div>
+                            </div>
+                        </template>
+                        <div class="bg-light-200 rounded-b-lg flex px-2 pt-0.5 pb-1 text-brand-dark font-bold">
+                            <div>Possible Win:</div>
+                            <div class="ml-auto text-right text-brand">
+                                <span x-html="currency"></span>
+                                <span x-text="function(){ var maxwin = details.IsFreeBet ? details.SumMaxWin - details.SumAmountBet : details.SumMaxWin; return common.parse(maxwin).output; }"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <template x-if="typeof details.CanCashoutResponse !== 'undefined' && details.CanCashoutResponse !== null">
+                        <div x-data="{ showPartial: false, partialCashoutRange: 100, handleRange(auto){
+                            confirmCashOut[item.Id] = false;
+                            if (!auto && (partialCashoutAmount[item.Id].slice(-1) === common.cultureInfo.decimalSeparator || partialCashoutAmount[item.Id] === '' || partialCashoutAmount[item.Id] === '0') ) return;
+                            var nativeAm = Math.round(details.CanCashoutResponse.CashoutAmount * 100),
+                                minAm = Math.round(details.MinimumBetPerColumn * 10 * 100),
+                                val = nativeAm * this.partialCashoutRange/100,
+                                finalAm = val,
+                                maxAm = ((((details.SumAmountBet - minAm / 1000) * 100) / details.SumAmountBet) / 100) * nativeAm;
+                            if (val > maxAm && val !== nativeAm) { finalAm = maxAm; }
+                            if (val <= minAm) { finalAm = minAm; }
+                            var am = auto ? common.parse(finalAm/100).output : (finalAm/100).toString().replace('.', common.cultureInfo.decimalSeparator);
+                            partialCashoutAmount[item.Id] = am;
+                            this.partialCashoutRange = (finalAm/nativeAm)*100;
+                        } }" x-init="partialCashoutAmount[item.Id] = common.parse(details.CanCashoutResponse.CashoutAmount).output" x-show="typeof cashoutAnswer[item.Id] === 'undefined'">
+                            <div class="flex mt-2">
+                                <button class="flex-grow bg-brand h-8 rounded-full text-light-100 text-base font-bold flex items-center justify-center transition relative z-20 disabled:saturate-50 disabled:text-light-300 group" 
+                                    :class="{ 'bg-success': confirmCashOut[item.Id] }" 
+                                    @@click="cashout(item.Id); clearInterval(detailsInterval); detailsInterval = setInterval(async function(){ console.log('Reloading: ' + item.Id); details = await getDetails(item.Id); }, duration)"
+                                    :disabled="!details.CanCashoutResponse.CanCashout || (typeof betLoading[item.Id] !== 'undefined' && betLoading[item.Id])">
+                                    <span x-show="details.CanCashoutResponse.CanCashout && !confirmCashOut[item.Id]">Cashout Bet</span>
+                                    <span x-show="confirmCashOut[item.Id] && !betLoading[item.Id]">Confirm Cashout</span>
+                                    <span class="text-secondary ml-2" x-show="details.CanCashoutResponse.CanCashout && !showPartial" x-html="currency + ' ' + common.parse(details.CanCashoutResponse.CashoutAmount).output"></span>
+                                    <span class="text-secondary ml-2" x-show="details.CanCashoutResponse.CanCashout && showPartial" x-html="currency + ' ' + common.parse(details.CanCashoutResponse.CashoutAmount*(partialCashoutRange/100)).output"></span>
+                                    <span class="ml-2 font-normal" x-show="(details.CanCashoutResponse.CanCashout || betLoading[item.Id]) && showPartial && partialCashoutRange < 100 && !confirmCashOut[item.Id]">
+                                        <span>Stake:</span>
+                                        <span class="text-secondary" x-html="common.parse(details.CanCashoutResponse.CashoutAmount*(partialCashoutRange/100)).output"></span>
+                                    </span>
+                                    <span x-show="!details.CanCashoutResponse.CanCashout">Cashout is disabled</span>
+                                    <svg class="animate-spin h-5 w-5 absolute top-1.5 left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" x-transition x-show="cashoutLoading[item.Id]">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span class="absolute top-2 right-2 opacity-30 scale-40" x-show="confirmCashOut[item.Id] && !betLoading[item.Id]">
+                                        <svg class="countdown count-6s absolute top-0 right-0" :class="{ 'start': confirmCashOut[item.Id] }">
+                                            <circle r="18" cx="20" cy="20" stroke="currentColor"></circle>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <template x-if="details.CanCashoutResponse.CanCashout && Math.round(details.CanCashoutResponse.CashoutAmount * 100) > Math.round(details.MinimumBetPerColumn * 10 * 100) && details.MinimumBetPerColumn != 0 && !details.IsFreeBet && !details.SportEventWithSelectionList.some(l=>l.IsCustomBetSelection)">
+                                    <button class="bg-brand ml-px w-8 h-8 rounded-full text-light-200 flex items-center justify-center pl-px transition relative z-20 disabled:saturate-50 disabled:text-light-300 group"
+                                        @@click="showPartial = !showPartial"
+                                        :disabled="!details.CanCashoutResponse.CanCashout || (typeof betLoading[item.Id] !== 'undefined' && betLoading[item.Id])">
+                                        <svg version="1.1" class="w-5 h-5 -mt-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.867 477.867" style="enable-background:new 0 0 477.867 477.867;" xml:space="preserve" fill="currentColor" x-transition:enter="" x-show="!showPartial">
+                                            <g>
+                                                <path d="M460.8,392.534h-87.757c-9.255-36.364-46.237-58.34-82.602-49.085c-24.116,6.138-42.947,24.969-49.085,49.085H17.067
+                                                    C7.641,392.534,0,400.175,0,409.6s7.641,17.067,17.067,17.067h224.29c9.255,36.364,46.237,58.34,82.602,49.085
+                                                    c24.116-6.138,42.947-24.969,49.085-49.085H460.8c9.426,0,17.067-7.641,17.067-17.067S470.226,392.534,460.8,392.534z"/>
+                                            </g>
+                                        </svg>
+                                        @*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" x-transition:enter x-show="showPartial">
+                                            <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                        </svg>*@
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 -ml-px -mt-px" x-transition:enter x-show="showPartial">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                        </svg>
+                                    </button>
+                                </template>
+                            </div>
+                            <div class="flex gap-2 px-1 mt-2 mb-1" x-transition x-show="showPartial && details.CanCashoutResponse.CanCashout">
+                                <div class="flex-grow">
+                                    <label class="text-xs mb-1" :for="`pc-rng-${item.Id}`">Partial Cashout <span :id="`pc-rng-lbl-${item.Id}`" x-text="Math.round(partialCashoutRange)"></span>%</label>
+                                    <input type="range" min="5" max="100" class="slider-brand-24 mt-3" :id="`pc-rng-${item.Id}`" x-model="partialCashoutRange" 
+                                        @*x-on:input="partialCashoutAmount[item.Id] = common.parse(details.CanCashoutResponse.CashoutAmount*(partialCashoutRange/100)).output"*@
+                                        x-on:input="handleRange(true)">
+                                </div>
+                                <div>
+                                    <label class="text-xs mb-1" :for="'partialCashoutAmount.'+item.Id">Amount:</label>
+                                    <input type="text" class="block w-16 bg-light-100 border-none rounded-md text-right px-2 py-1 h-9 focus:ring-brand focus:ring-2" :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" x-model="partialCashoutAmount[item.Id]"  x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                        @@keyup="if (common.parse.toNum($el.value) > details.CanCashoutResponse.CashoutAmount) { $el.value = details.CanCashoutResponse.CashoutAmount }; partialCashoutRange = (common.parse.toNum($el.value)/details.CanCashoutResponse.CashoutAmount)*100; handleRange(false)" 
+                                        :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'partialCashoutAmount.'+item.Id, 'ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'partialCashoutAmount.'+item.Id, 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                        @@click="keyboard().toggle('partialCashoutAmount.'+item.Id, { id: item.Id, val: details.CanCashoutResponse.CashoutAmount, minBetPerCol: details.MinimumBetPerColumn, sum: details.SumAmountBet })" 
+                                        :readonly="common.isTouch" :id="'partialCashoutAmount.'+item.Id">
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="bg-success h-8 rounded-full text-light-100 text-base font-bold flex items-center justify-center mt-2 relative z-20" x-transition x-show="typeof cashoutAnswer[item.Id] !== 'undefined' && cashoutAnswer[item.Id].length > 0">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 absolute top-1 left-1">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                        <span x-text="cashoutAnswer[item.Id]"></span>
+                        <span class="absolute top-2 right-2 opacity-30 scale-40">
+                            <svg class="countdown count-6s absolute top-0 right-0" :class="{ 'start': typeof cashoutAnswer[item.Id] !== 'undefined' && cashoutAnswer[item.Id].length > 0 }">
+                                <circle r="18" cx="20" cy="20" stroke="currentColor"></circle>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </template>
+            <template x-if="!open">
+                <div class="text-xs mt-2 pt-px bg-white">
+                    <div class="bg-light-100 flex items-center px-2 py-0.5 text-brand-dark mb-px">
+                        <div class="flex-grow">
+                            Amount
+                            <template x-if="item.IsFreeBet">
+                                <span class="text-brand font-bold inline-flex items-center">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2229.000000 2229.000000" preserveAspectRatio="xMidYMid meet" class="inline w-5 h-5 ml-2 mr-1">
+                                        <g transform="translate(0.000000,2229.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                            <path d="M3315 19100 c-398 -39 -777 -266 -1002 -600 -36 -53 -111 -202 -141 -280 -34 -86 -60 -206 -72 -319 -14 -144 -14 -13518 0 -13662 33 -329 192 -640 436 -854 195 -170 394 -270 654 -327 l105 -23 7870 0 c7523 0 7874 1 7965 18 474 89 853 423 999 880 69 217 64 64 68 2119 l4 1858 -2933 3 -2933 2 -80 22 c-224 60 -398 171 -530 336 -108 135 -185 308 -204 459 -6 43 -11 1014 -13 2413 l-3 2340 22 85 c57 223 169 401 336 535 132 105 304 183 453 205 45 6 1106 10 2977 10 l2908 0 -4 1813 c-4 2005 1 1857 -68 2074 -145 453 -515 782 -989 880 -81 16 -491 17 -7915 19 -4307 1 -7866 -2 -7910 -6z m870 -3263 c121 -68 240 -135 265 -149 25 -14 135 -76 245 -138 110 -62 306 -172 435 -245 384 -217 985 -556 1295 -730 22 -12 162 -91 310 -175 233 -131 779 -438 855 -481 14 -7 41 -23 60 -35 19 -11 170 -97 335 -189 165 -92 316 -177 335 -188 19 -11 141 -79 270 -152 129 -72 253 -142 275 -155 163 -92 284 -160 298 -165 9 -4 46 15 94 48 43 29 184 125 313 212 129 87 316 213 415 280 99 67 284 191 410 277 127 85 306 206 399 269 93 63 293 197 445 300 359 241 977 658 1396 941 110 74 304 205 430 290 127 85 278 187 337 227 60 40 115 71 123 69 15 -3 -26 -66 -409 -632 -67 -98 -128 -189 -136 -202 -8 -13 -83 -124 -166 -246 -83 -123 -226 -335 -319 -473 -92 -137 -210 -311 -260 -385 -98 -144 -299 -442 -533 -790 -80 -118 -159 -235 -176 -260 -17 -25 -35 -53 -41 -62 -5 -9 -60 -90 -121 -180 -61 -90 -159 -235 -219 -323 -59 -88 -122 -180 -139 -205 -17 -25 -35 -53 -41 -62 -5 -9 -46 -70 -91 -135 -44 -65 -122 -180 -174 -256 l-93 -139 26 -51 c27 -54 55 -104 135 -242 25 -44 56 -98 68 -120 28 -50 280 -498 308 -546 12 -20 67 -119 124 -220 56 -101 114 -204 129 -229 38 -65 62 -108 93 -165 15 -27 75 -133 132 -235 57 -102 109 -194 115 -205 7 -11 28 -48 47 -81 20 -34 94 -165 164 -290 71 -126 137 -245 149 -264 20 -35 276 -490 318 -565 74 -134 290 -515 305 -540 10 -16 28 -48 40 -70 167 -299 264 -472 270 -480 4 -5 21 -35 38 -65 33 -60 280 -500 317 -565 114 -198 163 -290 159 -297 -8 -12 -37 -10 -59 6 -11 7 -45 27 -75 43 -59 32 -649 364 -715 403 -22 12 -130 73 -240 135 -110 61 -218 122 -240 135 -22 13 -58 33 -80 45 -22 12 -123 69 -225 127 -102 57 -225 127 -274 154 -48 27 -105 58 -125 70 -20 11 -149 84 -287 161 -138 78 -297 168 -355 201 -57 33 -196 111 -309 174 -335 188 -760 427 -832 469 -37 22 -212 121 -390 220 -178 100 -341 192 -363 204 -22 12 -148 83 -280 157 -275 155 -296 167 -348 198 -40 24 -58 22 -102 -14 -11 -9 -121 -84 -245 -168 -124 -83 -326 -219 -448 -302 -123 -83 -235 -158 -248 -166 -12 -8 -116 -78 -230 -155 -113 -77 -217 -147 -230 -155 -13 -8 -130 -87 -261 -176 -333 -224 -630 -425 -968 -652 -159 -108 -357 -241 -440 -297 -183 -124 -692 -467 -990 -667 -121 -81 -228 -148 -238 -148 -14 0 -7 16 35 75 29 41 64 93 78 115 27 42 268 401 471 698 68 101 128 191 134 200 5 9 19 31 31 47 27 40 211 310 416 615 91 135 212 315 270 400 57 85 180 268 273 405 93 138 228 338 300 445 72 107 221 328 330 490 109 162 223 331 254 375 31 44 61 87 66 97 6 10 67 102 138 207 l128 189 -35 58 c-30 52 -221 391 -282 499 -45 81 -287 511 -309 550 -58 101 -600 1064 -667 1185 -17 30 -34 60 -38 65 -7 8 -120 210 -225 400 -15 28 -43 77 -63 110 -19 33 -109 193 -199 355 -91 162 -169 300 -173 305 -4 6 -65 114 -135 240 -70 127 -131 235 -135 240 -4 6 -20 33 -36 60 -51 92 -342 611 -368 656 -12 20 -67 119 -124 220 -131 235 -136 243 -144 247 -16 7 -8 42 10 42 9 0 116 -56 237 -123z"/>
+                                            <path d="M15303 13330 c-28 -4 -85 -18 -125 -30 -375 -114 -640 -430 -688 -820 -14 -120 -14 -2614 1 -2735 48 -394 336 -726 719 -827 l85 -23 2740 0 2740 0 85 22 c118 31 272 110 366 187 134 109 220 224 285 380 78 188 73 83 77 1566 3 1348 1 1437 -34 1575 -21 81 -94 233 -149 311 -128 179 -300 300 -530 371 l-90 28 -2715 1 c-1493 1 -2738 -2 -2767 -6z m1990 -1121 c222 -44 393 -136 565 -303 181 -176 286 -378 327 -629 45 -280 -19 -567 -184 -817 -87 -133 -278 -298 -436 -378 -137 -68 -332 -112 -500 -112 -314 0 -599 122 -817 348 -93 97 -136 159 -195 277 -90 180 -128 353 -120 545 6 148 28 249 82 382 59 148 123 246 233 360 154 159 330 263 529 314 184 46 327 50 516 13z"/>
+                                        </g>
+                                    </svg>
+                                    Free Bet
+                                </span>
+                            </template>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <span x-html="currency"></span>
+                            <span x-text="common.parse(item.AmountBet).output"></span>
+                        </div>
+                    </div>
+                    <template x-if="item.MultiBet === 0 && item.NumOfSelectedLinesForCombination === item.NumOfBetlines">
+                        <div class="bg-light-100 flex px-2 py-0.5 text-brand-dark mb-px">
+                            <div>Odd</div>
+                            <div class="ml-auto text-right" x-text="common.parse(item.PossibleTotalOdds).output"></div>
+                        </div>
+                    </template>
+                    <template x-if="item.BonusTotalAmount > 0">
+                        <div class="bg-light-100 flex px-2 py-0.5 text-brand-dark mb-px">
+                            <div>Bonus Amount</div>
+                            <div class="ml-auto text-right">
+                                <span x-html="currency"></span>
+                                <span x-text="common.parse(item.BonusTotalAmount).output"></span>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="bg-light-200 rounded-b-lg flex px-2 pt-0.5 pb-1 text-brand-dark font-bold">
+                        <div>Possible Win:</div>
+                        <div class="ml-auto text-right text-brand">
+                            <span x-html="currency"></span>
+                            <span x-text="common.parse(item.AmountPossibleWin).output"></span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+    <partial name="_Keyboard"/>
+</div>
+</div>

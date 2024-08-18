@@ -1,0 +1,292 @@
+/* purgecss start ignore */
+
+/*@font-face {
+  font-family: 'fp-font';
+  src: url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaSemibold/font.woff2)
+      format('woff2'),
+    url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaSemibold/font.woff) format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fp-font';
+  src: url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaBold/font.woff2) format('woff2'),
+    url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaBold/font.woff) format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fp-font';
+  src: url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaRegular/font.woff2)
+      format('woff2'),
+    url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaRegular/font.woff) format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fp-font';
+  src: url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaRegularItalic/font.woff2)
+      format('woff2'),
+    url(https://assets.b2bgamingservices.com/sites/54/assets/fonts/averta-web/AvertaRegularItalic/font.woff)
+      format('woff');
+  font-weight: 400;
+  font-style: italic;
+}*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  
+  /* Default (fallback) style */
+  :root {
+    --color-brand-light: #2575ba;
+    --color-brand: #0055a5;
+    --color-brand-dark: #1f2c3f;
+    --color-light-100: #f2f2f4;
+    --color-light-200: #e8e8eb;
+    --color-light-300: #99a7ba;
+    --color-light-400: #667b97;
+    --color-indicator: #e1223c;
+    --color-success: #10a778;
+    --color-oddup: #0d8d64;
+    --color-odddown: var(--color-indicator);
+
+
+    --color-brand-100: #126ab9;
+    --color-brand-200: #0055a5;
+    --color-brand-300: #044883;
+    --color-brand-400: #002c52;
+    --color-secondary: #ffde00;
+    --color-oddbutton: #dfe8f3;
+    --color-white: #ffffff;
+  
+    /*--color-light-100: #f1f6fb;
+    --color-light-200: #dfe8f3;
+    --color-light-300: #d4e0ed;
+    --color-light-400: #c3d0dd;
+    --color-light-500: #b3c2d0;
+    --color-light-600: #748698;*/
+  
+    --color-dark-brand-100: #005fb8;
+    --color-dark-brand-200: #0055a5;
+    --color-dark-brand-300: #0055a5;
+    --color-dark-brand-400: #00509a;
+    --color-dark-light-100: #004a8f;
+    --color-dark-body: #002a52;
+    --color-dark-500: #003566;
+    --color-dark-600: #002a52;
+    --color-dark-oddbutton: #00203d;
+
+    --color-dark-100: #00203d;
+    --color-dark-200: #002a52;
+    --color-dark-300: #003566;
+  
+    --color-light-100-rgb: 241, 246, 251;
+  }
+  
+  /* Betshop */
+  .theme-1,
+  .theme-44,
+  .theme-54,
+  .theme-75 {
+    /*
+    --color-brand-100: #126ab9;
+    --color-brand-200: #0055a5;
+    --color-brand-300: #044883;
+    --color-brand-400: #002c52;
+    --color-secondary: #ffde00;
+    --color-indicator: #e1223c;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f1f6fb;
+  
+    --color-light-100: #f1f6fb;
+    --color-light-200: #dfe8f3;
+    --color-light-300: #d4e0ed;
+    --color-light-400: #c3d0dd;
+    --color-light-500: #b3c2d0;
+    --color-light-600: #748698;
+    
+    --color-dark-brand-100: #005fb8;
+    --color-dark-brand-200: #0055a5;
+    --color-dark-brand-300: #0055a5;
+    --color-dark-brand-400: #00509a;
+    --color-dark-light-100: #004a8f;
+    --color-dark-body: #002a52;
+    --color-dark-500: #003566;
+    --color-dark-600: #002a52;
+    --color-dark-oddbutton: #00203d;*/
+  }
+  
+  /* Betshop.gr */
+  /*.theme-girls {
+    --color-body: #f1f6fb;
+    --color-brand-200: #47235b;
+    --color-brand-300: #7c439c;
+    --color-brand-100: #7c439c;
+    --color-brand-400: #47235b;
+  }*/
+  
+  /* BetBetty */
+  .theme-84,
+  .theme-107 {
+    --color-secondary: #fab001;
+    --color-body: #f1f6fb;
+  }
+  
+  /* Casinomode */
+  .theme-77,
+  .theme-78 {
+    --color-brand-100: #293e6a;
+    --color-brand-200: #182045;
+    --color-brand-300: #0e1329;
+    --color-brand-400: #0a0d1c;
+    --color-secondary: #ddc358;
+    --color-body: #f1f6fb;
+  
+    --color-dark-brand-100: #005fb8;
+    --color-dark-brand-200: #182045;
+    --color-dark-brand-300: #0055a5;
+    --color-dark-brand-400: #00509a;
+    --color-dark-light-100: #004a8f;
+    --color-dark-body: #182045;
+    --color-dark-500: #293e6a;
+    --color-dark-600: #182045;
+    --color-dark-oddbutton: #0e1329;
+  }
+  
+  /* Camwin */
+  .theme-137,
+  .theme-138 {
+    --color-brand-100: #444;
+    --color-brand-200: #292929;
+    --color-brand-300: #222;
+    --color-brand-400: #0d0d0d;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f0f3f5;
+  
+    --color-light-100: #f0f3f5;
+    --color-light-200: #dae0e7;
+    --color-light-300: #ced6df;
+    --color-light-400: #c1cbd7;
+    --color-light-500: #b4c0cf;
+    --color-light-600: #9cacbf;
+  }
+  
+  /* playwin */
+  .theme-135,
+  .theme-136 {
+    --color-brand-100: #293e6a;
+    --color-brand-200: #182045;
+    --color-brand-300: #0e1329;
+    --color-brand-400: #0a0d1c;
+    --color-secondary: #ddc358;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f1f6fb;
+  }
+  
+  /* PowerBetting */
+  .theme-127,
+  .theme-128 {
+    --color-brand-100: #444;
+    --color-brand-200: #292929;
+    --color-brand-300: #222;
+    --color-brand-400: #0d0d0d;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f0f3f5;
+  
+    --color-light-100: #f0f3f5;
+    --color-light-200: #dae0e7;
+    --color-light-300: #ced6df;
+    --color-light-400: #c1cbd7;
+    --color-light-500: #b4c0cf;
+    --color-light-600: #9cacbf;
+  }
+  
+  /* Racetan */
+  .theme-123,
+  .theme-124 {
+    --color-brand-100: #444;
+    --color-brand-200: #292929;
+    --color-brand-300: #222;
+    --color-brand-400: #0d0d0d;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f0f3f5;
+  
+    --color-light-100: #f0f3f5;
+    --color-light-200: #dae0e7;
+    --color-light-300: #ced6df;
+    --color-light-400: #c1cbd7;
+    --color-light-500: #b4c0cf;
+    --color-light-600: #9cacbf;
+  }
+  
+  /* Vazabet */
+  .theme-109,
+  .theme-110 {
+    --color-brand-100: #444;
+    --color-brand-200: #292929;
+    --color-brand-300: #222;
+    --color-brand-400: #0d0d0d;
+    --color-oddbutton: #dfe8f3;
+    --color-body: #f0f3f5;
+  
+    --color-light-100: #f0f3f5;
+    --color-light-200: #dae0e7;
+    --color-light-300: #ced6df;
+    --color-light-400: #c1cbd7;
+    --color-light-500: #b4c0cf;
+    --color-light-600: #9cacbf;
+  }
+  
+  /* purgecss end ignore */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Placed here temporarily until I find the correct SASS position */
+/* removes the unwanted space at the bottom caused by the 1x1 image */
+body > img[height="1"] {
+    height:0;
+}
+*:active {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+.slider-brand-24 {
+  -webkit-appearance: none;
+  appearance: none;
+  @apply bg-light-200 w-full h-3 outline-none rounded-xl;
+}
+.slider-brand-24::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  @apply bg-brand rounded-2xl w-4 h-6 cursor-pointer;
+}
+.slider-brand-24::-moz-range-thumb {
+  @apply bg-brand rounded-2xl w-4 h-6 cursor-pointer;
+}
+
+.countdown {
+  height:40px;
+  width:40px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+.countdown circle {
+  stroke-dasharray: 113px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 4px;
+  fill: none;
+}
+.start.count-6s circle {animation: countdown 6s linear forwards}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 113px;
+  }
+}

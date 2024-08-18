@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" version="1.1">
+   <defs>
+       <filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+           <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+       </filter>
+       <image id="image7" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAEYUlEQVRoge1Zf2wTZRh+vrte13XFUjb3BwYYCVER9gMStgRFxBkZiQkyiUrAOMF/JOhiFpLFaLa4GBRiMDiiMTGIJga2iD8wGDNwUyZxOMmE6FgMRhg4dVvmurG6u15f/7iy9npt78fX1Rn2JE3v3vf93ud9+t1333tXYBazuLnBkhlp4twCSEf2g514EOidk+2i9Fg6Bio/BXVZPfPU9SV6DQJo4twCuGt7gDPzslOgVVSMQG4uZd6V/fFWwRAnHdk/84oHgK4A3KteT7QaZyC8PPjfXzapUBxkrh5/vCWJAJG4OIh1QG3YAXloFDmlVRBP7gWOzufKGQfmUnU1Z1iAX8FkRxHLK/l9Kp98cheE9W86z6lHogDjGuDCk9fii9cYcy5mlkOPzAmgi9+Bqod1psHDc4Aduy2NdQiX04H6AsZfZlJug8H+d4+MQOUBhIRt8GxeAqzPSzqe1eeCOmLj2cYSYFSyQs2/BmhfH165fhdrfClieUiLKGJTeA3Qqf2A7LOHgf64gs9uAy57kxacsAaMycMi2foo1GipaIiMwr7NGsfuZts80U9iXv41EDn0i6U4pXo1lBXfa2ruu5ubNwr+NcC2+IDt5mFS67cAQGPvFIJ1+7h5o+ATQG9VYdxn7w6S8+5DQPcSLt448F1C41u62Dx1NJWbhlffQuHCD0kZWQdEG0VhpfFuxQGOGSicRGBuyuIBgOWfCZKyZxCs4CsKVw0CVX5g2O2c0wiOGRAJ8gfl5nGr/tG+227NdPEAl4ABD4Qm8yaNfTStnS3fGqCG62nd7addoKXruDhMwCcgsmFuKhdBZLjnwnmw5+/k4jABhwB3BMLCP1N5GVQCDl5xnt8aOAQUTUAa/yZtiJz3FLD1mnMOc3AIUBn+KNU1XNTYpMvH8s4OAF8/55zDHBwCfvNC8og3zqj/8Vy8GDygPQPEwFyXj4GOnnfOYxPWO8NHdU9epFCjZn9gkIK1+XpfZb3T7nP6ulGqHtKdsxee0A7aC+D99VWdb7LmPaA46JjLVl2WnwN+7JoaE2paqPfnqiRf2EmhNYumYpT5bTNrBiJFsZdM0mt79U5ZgFB2EK61j8RsAdUxVxo4E0BDnSzH3wIAJH/6LBB6LHlcW3vs5BN/0hhOOBSw+P1Yhs47Ugd2C0B0V2Zbp2VHdiBg0QSU2z8HooVRydrU2fOLgOiuTDUDzkpMD/sCqOFtbYMCoHRUgtUsTxkbeeM2ILrBsd6kbxkyDvO7z/aPAYD+qvSRUnEifayrHQAoeLpgBu0Dtb0AgAB2gXVvSBvKnlkMABDrJMAXts9lDgcCWo9r35fuN48NfQFEe6JI9dMA55vvJLAvYGzPz9rBxjHTWOq8euOQuQ8dRmTnCtA+w99EPPif/cFRNspcP+geoowzQOWnslaPbfz0ZaLFKEBdVg9UjGSlHlu4dxhyYV2i1SCAeer6IDeXAmjNWgeZFsVBQGqBfKmMea9cNY+fxSxuLvwLUR3EGZ4Zt7cAAAAASUVORK5CYII="/>
+       <mask id="mask0">
+           <g filter="url(#alpha)">
+               <use xlink:href="#image7"/>
+           </g>
+       </mask>
+       <clipPath id="clip1">
+           <rect x="0" y="0" width="48" height="48"/>
+       </clipPath>
+       <g id="surface6" clip-path="url(#clip1)">
+           <rect x="0" y="0" width="48" height="48" style="fill:rgb(90, 122, 132);fill-opacity:1;stroke:none;"/>
+       </g>
+   </defs>
+   <g id="surface1">
+       <use xlink:href="#surface6" mask="url(#mask0)"/>
+   </g>
+</svg>

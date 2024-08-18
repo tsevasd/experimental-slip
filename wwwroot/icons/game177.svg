@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" version="1.1">
+   <defs>
+       <filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+           <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+       </filter>
+       <image id="image7" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAEiUlEQVRoge1ZbUwcRRh+5hYPypVQoYhQSrFnlUaFSJFWEVN+NGmTJsSPkmijJtaqaJoWKtVo0DNYa/w4qZXaYKPVqIkNavyKH62hDWlT/IHaxgRFA1eLkFYo0Dvu2Nm71x8ku92Pu9u7270fhifZZOadd955np3Zd3ZngXnMYx5xQbzsDpKcEZIEMn2JOyrl/rO1K4l/8zPxXd3EH2wl8WgNQWDpFSGteS9pAeKOSr1Pk4/48IsUqClKhZfDtGdwchdw20Qqg6nRVQrmfhaZw8PEvR00VZGXTBTTAljOwAVEhp9KZhBE/vQDj5w1bhx3grVuh6t4gKRldyUV3yzI0+4gPnIi0SUk9/cXFZL0wEaSij8iqShk2I/v2Us9vRn2iZj1VpCUy5MRoIpzqbyAeGEbScsDehEbvqLB5kxrCB8WBAryMpVNahhLVYAcK7TRTbzgqKEIK2aCuLeDeNOTdgkAAILAiP++Wx/nhTdTIy/VNczdDXsFyHHFL7aRtCCsibUpVp+oWWgurbneSZREKmDOhn2goZfU1vr9sVJs9DTqutsDHCmwipxpfL7EA2LHFEPPYmTf+3w0d0MBFDhdDHQ+ajk5E2CN4TDE/s3AdX7F+MZjc5z0MJ4BZ+YTwLhTrpP3ksU8Y4K5Kv4BdXUqlnHnHCc9dAIIAgN7a7NicQcQerrbeppxEOx+FVip3Dj2+v2mXgBJ3LtGnQXWH9T52JSF9OOsOqSOeeYWrY9+CbFP6tWGmz5LlUjSCH/6rarOXlurdTF4BiovU+mM4N8fj1vNyzSC7h+AhZJiKFytdTEQcPP1cpF2D7Kr+wO2kDMBtih8EXjonGKpWaH1MVhChy77wDjgs4VZIqDHx+Qy61yibTaYgYGFSoezk/awSgTeUaX8W462Nc4HDU/vd6shnKSUF4S1rQYCypUdkNy5tnBKCB35Srl6StuqF0BNI0plS5kdlBLDK8ozSZsuaFsNZuDkoFxknmtprMplD7H4oKmKPLA2JfOwljNaHwMBf/cpZdGBxTfW633SBFftrUBYeQ5p3S9aF4MldN8xtWHkTsuJmcaJRlU1Uvl93C4EgZG0bVh5B1keoOnt+SqfNLwL0YSQq/7gbx4y8tPNAEOYQDs/VCy+bGS9fE8qZJJCjtQM+LLlOn38rpGb8T4gNnYC+aJcZy26DcRO0ExpCZi7VbEUhRC68oCRr6EA5vppFPTcfnvomcDQ1vPw+0rgRx78yMNUaSHLGdClUCDWTjzT1Q5sOG8byRhgN7SJbFH4onzln5yO5htVAMs9PQFIW+2haB1innyxjO++JP6+FziVROh9q4n3Wneq8eva46w6zBPuR4cFgWZKS1Q2M2nU0uvht6PxS/htk8SlVXBM9wF++06QVQMe6ce5FbXsmqUho+aEBFBPbwZu531g66qsYRcPqyYhXVXNsr7+y5Jwc8fh6Vo2zoiZHx6m/9DQ7JZysCueSe0WJAD6wMsyfHFPREwJIE+7A449B4HRrNSZmRlw4BT+GLTuZhFv2Zm+pVM3TsG6ZZaRn8c8/uf4D8giAOePoX2mAAAAAElFTkSuQmCC"/>
+       <mask id="mask0">
+           <g filter="url(#alpha)">
+               <use xlink:href="#image7"/>
+           </g>
+       </mask>
+       <clipPath id="clip1">
+           <rect x="0" y="0" width="48" height="48"/>
+       </clipPath>
+       <g id="surface6" clip-path="url(#clip1)">
+           <rect x="0" y="0" width="48" height="48" style="fill:rgb(67.843137%,56.078431%,31.764706%);fill-opacity:1;stroke:none;"/>
+       </g>
+   </defs>
+   <g id="surface1">
+       <use xlink:href="#surface6" mask="url(#mask0)"/>
+   </g>
+</svg>

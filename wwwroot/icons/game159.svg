@@ -1,0 +1,17 @@
+
+
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 48 48"
+    aria-labelledby="iconName"
+    role="presentation"
+  >
+ <g
+    ><path
+      d="M17,20,12.128,44H35.872L31,20l7.658-6.247A1,1,0,0,0,39,13V2a1,1,0,0,0-1-1H34a1,1,0,0,0-1,1V8H28V2a1,1,0,0,0-1-1H21a1,1,0,0,0-1,1V8H15V2a1,1,0,0,0-1-1H10A1,1,0,0,0,9,2V13a1,1,0,0,0,.342.753Z"
+      fill="#636363"
+    ></path>
+    <path d="M17,20H31l7.658-6.247A1,1,0,0,0,39,13H9a1,1,0,0,0,.342.753Z" fill="#444"></path>
+    <rect x="7" y="43" width="34" height="4" rx="1" ry="1" fill="#444"></rect
+  ></g>
+  </svg>

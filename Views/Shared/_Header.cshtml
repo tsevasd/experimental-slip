@@ -1,0 +1,15 @@
+﻿@* header *@
+<div class="overflow-hidden">
+    <div class="bg-light-200 rounded-t-3xl grid grid-cols-2 justify-items-stretch h-10">
+        <a class="rounded-t-3xl font-bold flex items-center justify-center cursor-pointer" :class="$store.slipTab.t === 1 ? 'bg-brand text-white shadow-lg' : 'text-light-400'" @*@@click="$store.slipTab.t !== 1 && init; $store.slipTab.goto(1)"*@ @@click="$store.slipTab.goto(1)" :href="common.isMyBets ? '@Url.RouteUrl("Betslip_Cart")' : 'javascript:;'">
+            Slip
+            @*<span class="bg-secondary rounded-full text-brand-dark text-xs font-bold w-5 h-5 inline-block text-center leading-5 pr-px ml-2 -mr-5 -mt-1" x-text="headerOddsCounter" x-show="headerOddsCounter > 0"></span>*@
+            <span class="bg-secondary rounded-full text-brand-dark text-xs font-bold w-5 h-5 inline-block text-center leading-5 pr-px ml-2 -mr-5 -mt-1" x-text="$store.betslip.headerCounter.bets" x-show="$store.betslip.headerCounter.bets > 0"></span>
+        </a>
+        <a class="rounded-t-3xl font-bold flex items-center justify-center cursor-pointer" :class="$store.slipTab.t === 2 ? 'bg-brand text-white shadow-lg' : 'text-light-400'" @*@@click="$store.slipTab.t !== 2 && init; $store.slipTab.goto(2)"*@ @@click="$store.slipTab.goto(2)" :href="common.isMyBets ? '@Url.RouteUrl("UnSettled_Index")' : 'javascript:;'">
+            Open Bets
+            @*<span class="bg-secondary rounded-full text-brand-dark text-xs font-bold w-5 h-5 inline-block text-center leading-5 pr-px ml-2 -mr-5 -mt-1" x-text="headerOpenBetsCounter" x-show="$store.slipTab.t === 2 && headerOpenBetsCounter > 0"></span>*@
+            <span class="bg-secondary rounded-full text-brand-dark text-xs font-bold w-5 h-5 inline-block text-center leading-5 pr-px ml-2 -mr-5 -mt-1" x-text="$store.betslip.headerCounter.openBets" x-show="$store.slipTab.t === 2 && $store.betslip.headerCounter.openBets > 0"></span>
+        </a>
+    </div>
+</div>

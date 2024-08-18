@@ -1,0 +1,417 @@
+﻿<div class="w-full sm:w-80 mx-auto relative overflow-hidden" x-data>
+    <partial name="_Header"/>
+
+    <div x-data="slip.UI.betslipHandler">
+        <div class="bg-white rounded-b-3xl p-2" x-show="$store.slipTab.t === 1 && Object.keys(receipt).length === 0" x-intersect.once="load">
+            <form id="form0" autocomplete="off">
+
+            @* Hidden fields list *@
+            <input type="hidden" name="__RequestVerificationToken" value="CfDJ8B6BrwsWQy1Jq9vaqpa0mX3IxAKwVilK147LZ9Fx8HoV6RacczTkXr_RatC_KwQS-Tr-urV52WiZ2imGTySzBa8z4Mb4K_lfOhpdmUQIfbqG0LXhsOzzPIBMWg3Pm12w93i8WE7YkIeYoM1e0_u6q3KiAUOFlTXvdKk_H8u-EN0g0nrW6_by1YET3IrdJ4Uy2w" />
+            <input type="hidden" name="WhiteLabelId" :value="model.WhiteLabelId" />
+            <input type="hidden" name="EventsCounter" :value="model.BetSlip.Events.length" />
+            <input type="hidden" name="Combinations.Count" :value="model.Combinations.length" />
+            <input type="hidden" name="MinimumAccepted" :value="model.BetSlip.MinimumAccepted" />
+            <input type="hidden" name="MultiplesBets" :value="model.BetSlip.MultiplesBets" />
+            <input type="hidden" name="NumberOfBankers" :value="model.BetSlip.NumberOfBankers" />
+            <input type="hidden" name="NumberOfNoBankers" :value="model.BetSlip.NumberOfNoBankers" />
+            <input type="hidden" name="Proposal" :value="model.Proposal" />
+            <input type="hidden" name="BetKeyForAuthorsation" value=" " />
+            <input type="hidden" name="minplay" value="0.01" />
+            <input type="hidden" name="minbetplay" value="0.01" />
+            <input type="hidden" name="CurrentCulture" :value="common.cultureInfo.culture" />
+
+            <input type="hidden" name="wlid" :value="model.WhiteLabelId" />
+            <input type="hidden" name="mul" :value="model.BetSlip.MultiplesBets" />
+            <input type="hidden" name="a" :value="model.BetSlip.MinimumAccepted + model.BetSlip.NumberOfBankers" />
+            <input type="hidden" name="b" :value="model.BetSlip.Events.length" />
+            <input type="hidden" name="c" :value="model.BetSlip.NumberOfNoBankers + model.BetSlip.NumberOfBankers" />
+            <input type="hidden" name="bet_auth" value=" " />
+            <input type="hidden" name="prop" :value="model.Proposal" />
+            <input type="hidden" name="showSystem" :value="model.ShowSystem" />
+
+            @* Shop Code & Selection textboxes *@
+            <template x-if="typeof isShop !== 'undefined' && isShop">
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" name="quickbetweekorder" placeholder="Code" class="block border-none rounded-lg px-2 py-1 h-9 ring-2 ring-light-200 focus:ring-2 focus:ring-light-300" />
+                    <input type="text" name="quickbetsymbol" placeholder="Selection" class="block border-none rounded-lg px-2 py-1 h-9 ring-2 ring-light-200 focus:ring-2 focus:ring-light-300" />
+                </div>
+            </template>
+
+            <partial name="_SystemSelect"/>
+
+            <div :class="{ 'pointer-events-none' : loading }">
+                @* Events *@
+                <div class="mb-3">
+                    <template x-for="event in model.BetSlip.Events">
+                        <div class="border-b-2 border-light-100 last:border-b-0" x-transition:leave x-show="!fadeOut[event.SportEventId]" :class="{ 'pointer-events-none': fadeOut[event.SportEventId] }">
+                            <div class="relative pl-1 pt-2">
+                                <button type="button" class="absolute top-0 right-0 z-10 p-2 text-light-300 hover:text-indicator" @@click="removeEvent(event.SportEventId)" x-show="!event.IsCustomBetEvent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="absolute top-1 right-10 z-10 w-8 h-8 rounded-lg flex items-center justify-center text-lg font-bold transition" :class="event.Banker ? 'text-light-100 bg-brand-light' : 'text-brand-light'" x-show="system === 3" @@click="setBanker(event.SportEventId)">B</button>
+                                <template x-if="event.IsCustomBetEvent">
+                                    <div class="mb-2">
+                                        <div class="flex items-center -ml-1 bg-light-200 rounded-full">
+                                            <div class="pl-2 text-sm text-brand-dark font-bold flex-1 flex items-center">
+                                                <span class="bg-brand-dark rounded-full text-light-200 w-5 h-5 text-xxs font-bold inline-flex items-center justify-center mr-1">BB</span>
+                                                Bet Builder
+                                            </div>
+                                            <div>
+                                                <a class="inline-block min-w-16 leading-none bg-secondary rounded-full px-4 py-3 text-sm text-brand-dark font-bold text-right cursor-pointer relative group" @@click="removeEvent(event.SportEventId)"
+                                                x-data="{ oddChange() { return 'BetResponse' in model && model.BetResponse.ChangedOdds.slice(-1) || { Modified: 0, ErrorStatus: 0 } } }">
+                                                    <span x-text="common.parse(event.CustomBetOddValue).output" :class="{ 'text-oddup': oddChange().Modified === 1, 'text-odddown': oddChange().Modified === -1 }"></span>
+                                                    <span class="absolute w-full rounded-full top-0 left-0 bottom-0 z-10 flex items-center justify-center opacity-0 bg-light-100 text-indicator transition group-hover:opacity-90">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-indicator">
+                                                            <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                                        </svg>
+                                                        @*<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" class="w-4 h-4">
+                                                            <path class="fill-brand-dark" d="M321.7,81.799l-13.2-41.6C306.7,34.2,300.7,30,294.401,30h-76.802C211.3,30,205.3,34.2,203.5,40.199 l-13.2,41.6c-6.301,18.6-34.799,9.3-28.5-9.6l13.2-41.3C181,12.299,198.1,0,217.599,0h76.802C313.9,0,331,12.299,337,30.899 l13.2,41.3C356.499,91.099,328.001,100.699,321.7,81.799z"/>
+                                                            <path class="fill-indicator" d="M436,122H76c-8.699,0-15.601,7.5-15,16.199L62.199,152l26.4,318.9c1.8,23.099,21.301,41.1,44.7,41.1 h245.402c23.399,0,42.9-18.001,44.7-41.1l26.4-318.9L451,138.199C451.601,129.5,444.699,122,436,122z"/>
+                                                            <path style="fill:#cb1932" d="M451,138.199L423.401,470.9c-1.8,23.099-21.301,41.1-44.7,41.1H256V122h180 C444.699,122,451.601,129.5,451,138.199z"/>
+                                                            <g>
+                                                                <path style="fill:#af0d23" d="M436,62H76c-24.901,0-45,20.099-45,45v30c0,8.399,6.599,15,15,15h420c8.401,0,15-6.601,15-15v-30 C481,82.099,460.901,62,436,62z"/>
+                                                                <path class="fill-secondary" d="M151,437V197c0-19.773,30-19.854,30,0v240C181,456.773,151,456.854,151,437z"/>
+                                                                <path class="fill-secondary" d="M271,197v240c0,9.899-7.5,15-15,15s-15-5.101-15-15V197c0-9.901,7.5-15,15-15S271,187.099,271,197z" />
+                                                                <path class="fill-secondary" d="M331,437V197c0-19.773,30-19.854,30,0v240C361,456.773,331,456.854,331,437z"/>
+                                                            </g>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                                            <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
+                                                        </svg>*@
+                                                    </span>
+                                                    <div class="absolute right-1 top-1/2" x-show="oddChange().Modified === 1 || oddChange().Modified === -1" :class="{ 'text-oddup rotate-180 -mt-2': oddChange().Modified === 1, 'text-odddown -mt-1': oddChange().Modified === -1 }">
+                                                        <span class="block animate-bounce"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-2.5 h-3 rotate-90">
+                                                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                                                        </svg></span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="text-center text-xs text-indicator"
+                                            x-show="function(){ 
+                                                BBError = model.BetSlip.Events.filter(e => e.IsCustomBetEvent).some(e => e.Selections.length < 2); 
+                                                return event.Selections.length < 2; }" @*x-text="model.BetResponse.ErrorMessage"*@>Add at least another selection</div>
+                                    </div>
+                                </template>
+                                <div class="mb-2 pr-16 flex relative" x-data="{ eventInfo: function() { return model.SlipEventCollection.find(e => e.Id = event.SportEventId); } }"> @* Auxiliary *@<div x-text="'['+event.SportEventId+']'" class="text-xxxs text-light-200 absolute -top-2 left-0"></div>@* /Auxiliary *@
+                                    <img class="inline w-4 h-4 mt-0.5 mr-1" :src="`icons/game${event.SlipEventLocalized.Game.Id}.svg`" :title="event.SlipEventLocalized.Game.Name" />
+                                    <div class="flex flex-wrap leading-tight tracking-tight" :class="{ 'text-indicator opacity-75': eventInfo().IsInvalid, 'text-light-400': 'BetResponse' in model && model.BetResponse.NotValidEvents.indexOf(event.SportEventId) > -1 }">
+                                        <span class="whitespace-nowrap" x-text="event.SlipEventLocalized.Team1"></span>
+                                        <span class="mx-1">-</span>
+                                        <span class="whitespace-nowrap" x-text="event.SlipEventLocalized.Team2"></span>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <template x-for="selection in event.Selections">
+                                        <div class="pl-1 mb-3 relative" x-transition:leave x-show="!fadeOut[event.SportEventId + '_' + selection.OddId]" :class="{ 'pointer-events-none': fadeOut[event.SportEventId + '_' + selection.OddId] }"
+                                        x-data="{ oddChange() { return 'BetResponse' in model && model.BetResponse.ChangedOdds.find(s => s.SportEventEventId === event.SportEventId && s.OddId === selection.OddId && s.SpecialBetValueId === selection.SpecialBetValueId) || { Modified: 0, ErrorStatus: 0 } } }">
+                                            <div class="flex items-end">
+                                                <template x-if="`${selection.OddId}_${selection.SpecialBetValueId}_${selection.PlayerId || 0}_${selection.TeamId || 0}` in event.SlipEventLocalized.SelectionCollection">
+                                                    <div class="flex-1 text-brand-dark text-sm" x-data="{ eventLocalizedSelectionCollection: function(){ return `${selection.OddId}_${selection.SpecialBetValueId}_${selection.PlayerId || 0}_${selection.TeamId || 0}` in event.SlipEventLocalized.SelectionCollection ? event.SlipEventLocalized.SelectionCollection[`${selection.OddId}_${selection.SpecialBetValueId}_${selection.PlayerId || 0}_${selection.TeamId || 0}`] : { MarketName: '', OddNameFromTemplate: '' } } }">
+                                                        @* Auxiliary *@<div class="text-xxxs text-light-200 leading-none absolute -top-1" x-text="`key: ${selection.OddId}_${selection.SpecialBetValueId}_${selection?.PlayerId || 0}_${selection?.TeamId || 0}`"></div>@* /Auxiliary *@
+                                                        <div class="text-sm leading-none">
+                                                            <span x-text="eventLocalizedSelectionCollection().MarketName"></span> 
+                                                            @*<span class="border border-indicator rounded-full px-1 ml-1 text-indicator text-xxxs align-middle" x-show="selection.IsLive">LIVE</span>*@
+                                                            <svg version="1.1" x="0px" y="0px" viewBox="0 0 512 256" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="w-8 h-4 inline text-indicator" x-show="selection.IsLive">
+                                                                <path fill="none" stroke="currentColor" stroke-width="12" d="M 400.6,218.4 H 111.4 c -53.7,0 -97.2,-43.5 -97.2,-97.2 v 0 C 14.2,67.499999 57.7,24 111.4,24 h 289.3 c 53.7,0 97.2,43.499999 97.2,97.2 v 0 c -0.1,53.6 -43.6,97.2 -97.3,97.2 z" />
+                                                                <path fill="currentColor" d="m 161.7,172.1 h -51.8 c -4.8,0 -8.7,-3.9 -8.7,-8.7 V 76.999999 c 0,-5 4.2,-8.9 9.2,-8.6 4.6,0.3 8.1,4.3 8.1,9 V 154.9 c 0,0 0,0 0,0 h 42.9 c 4.6,0 8.7,3.5 9,8.1 0.2,4.9 -3.8,9.1 -8.7,9.1 z m 43.2,-8.7 c 0,5 -4.2,8.9 -9.2,8.6 -4.6,-0.3 -8.1,-4.3 -8.1,-9 V 77.199999 c 0,-4.6 3.5,-8.7 8.1,-9 5,-0.3 9.2,3.7 9.2,8.6 z M 316.7,80.099999 282.1,166.6 c -1.3,3.3 -4.5,5.4 -8,5.4 -3.5,0 -6.7,-2.2 -8,-5.4 L 231.5,80.099999 c -1.8,-4.4 0.4,-9.5 4.8,-11.3 4.4,-1.8 9.5,0.4 11.3,4.8 L 274.1,139.9 c 0,0 0.1,0 0.1,0 l 26.5,-66.300001 c 0.3,-0.8 0.7,-1.5 1.2,-2.2 2.5,-3.2 6.6,-4.1 10,-2.7 2.1,0.9 3.8,2.5 4.7,4.6 1,2.3 1,4.7 0.1,6.8 z M 360.7,111.5 h 42.9 c 4.6,0 8.7,3.5 9,8.1 0.3,5 -3.7,9.2 -8.6,9.2 h -43.2 c 0,0 0,0 0,0 v 25.9 c 0,0 0,0 0,0 H 404 c 5,0 8.9,4.2 8.6,9.2 -0.3,4.6 -4.3,8.1 -9,8.1 H 352 c -4.8,0 -8.7,-3.9 -8.7,-8.7 V 76.899999 c 0,-4.8 3.9,-8.7 8.7,-8.7 h 51.8 c 5,0 8.9,4.2 8.6,9.2 -0.3,4.6 -4.3,8.1 -9,8.1 h -42.9 c 0,0 0,0 0,0 L 360.7,111.5 c -0.1,0 -0.1,0 0,0 z" />
+                                                            </svg>
+                                                        </div>
+                                                        <div x-text="eventLocalizedSelectionCollection().OddNameFromTemplate"></div>
+                                                    </div>
+                                                </template>
+                                                <div>
+                                                    <template x-if="event.IsCustomBetEvent">
+                                                        <a class="inline-block px-2 py-3 text-sm cursor-pointer text-light-300 hover:text-indicator" @@click="removeOdd(selection.OddId, event.SportEventId)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                                                <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </a>
+                                                    </template>
+                                                    <template x-if="!event.IsCustomBetEvent">
+                                                        <a class="inline-block min-w-16 leading-none bg-secondary rounded-full px-4 py-3 text-sm text-brand-dark font-bold text-right cursor-pointer relative group" @@click="removeOdd(selection.OddId, event.SportEventId)">
+                                                            <span x-text="common.parse(selection.OddValue).output" :class="{ 'text-oddup': oddChange().ErrorStatus === 0 && oddChange().Modified === 1, 'text-odddown': oddChange().ErrorStatus === 0 && oddChange().Modified === -1 }"></span>
+                                                            <span class="absolute w-full rounded-full top-0 left-0 bottom-0 z-10 flex items-center justify-center opacity-0 bg-light-100 text-indicator transition group-hover:opacity-90">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-indicator">
+                                                                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                                                </svg>
+                                                                @*<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" class="w-4 h-4">
+                                                                    <path class="fill-brand-dark" d="M321.7,81.799l-13.2-41.6C306.7,34.2,300.7,30,294.401,30h-76.802C211.3,30,205.3,34.2,203.5,40.199 l-13.2,41.6c-6.301,18.6-34.799,9.3-28.5-9.6l13.2-41.3C181,12.299,198.1,0,217.599,0h76.802C313.9,0,331,12.299,337,30.899 l13.2,41.3C356.499,91.099,328.001,100.699,321.7,81.799z"/>
+                                                                    <path class="fill-indicator" d="M436,122H76c-8.699,0-15.601,7.5-15,16.199L62.199,152l26.4,318.9c1.8,23.099,21.301,41.1,44.7,41.1 h245.402c23.399,0,42.9-18.001,44.7-41.1l26.4-318.9L451,138.199C451.601,129.5,444.699,122,436,122z"/>
+                                                                    <path style="fill:#cb1932" d="M451,138.199L423.401,470.9c-1.8,23.099-21.301,41.1-44.7,41.1H256V122h180 C444.699,122,451.601,129.5,451,138.199z"/>
+                                                                    <g>
+                                                                        <path style="fill:#af0d23" d="M436,62H76c-24.901,0-45,20.099-45,45v30c0,8.399,6.599,15,15,15h420c8.401,0,15-6.601,15-15v-30 C481,82.099,460.901,62,436,62z"/>
+                                                                        <path class="fill-secondary" d="M151,437V197c0-19.773,30-19.854,30,0v240C181,456.773,151,456.854,151,437z"/>
+                                                                        <path class="fill-secondary" d="M271,197v240c0,9.899-7.5,15-15,15s-15-5.101-15-15V197c0-9.901,7.5-15,15-15S271,187.099,271,197z" />
+                                                                        <path class="fill-secondary" d="M331,437V197c0-19.773,30-19.854,30,0v240C361,456.773,331,456.854,331,437z"/>
+                                                                    </g>
+                                                                </svg>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                                                    <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
+                                                                </svg>*@
+                                                            </span>
+                                                            <div class="absolute right-1 top-1/2" x-show="oddChange().ErrorStatus === 0 && (oddChange().Modified === 1 || oddChange().Modified === -1)" :class="{ 'text-oddup rotate-180 -mt-2': oddChange().Modified === 1, 'text-odddown -mt-1': oddChange().Modified === -1 }">
+                                                                <span class="block animate-bounce"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-2.5 h-3 rotate-90">
+                                                                    <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                                                                </svg></span>
+                                                            </div>
+                                                        </a>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light-100 rounded-lg flex items-center p-1 pl-2 -ml-2 text-brand-dark mt-2" x-show="system === 4">
+                                                <div class="flex-grow">Amount:</div>
+                                                <div class="ml-auto text-right">
+                                                    <input type="text" class="block w-20 border-none rounded-md text-right px-2 py-1 h-9" :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" 
+                                                        x-model="singleAmount['singleAmount_' + event.SportEventId + '_' + selection.OddId]" 
+                                                        x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                                        :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'singleAmount.singleAmount_' + event.SportEventId + '_' + selection.OddId,'ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'singleAmount.singleAmount_' + event.SportEventId + '_' + selection.OddId, 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                                        @@click="keyboard().toggle('singleAmount.singleAmount_' + event.SportEventId + '_' + selection.OddId)" 
+                                                        :name="`amount-${event.SportEventId}_${selection.OddId}_${selection.SpecialBetValueId}_${selection?.PlayerId || 0}_${selection?.TeamId || 0}`"
+                                                        :readonly="common.isTouch" />
+                                                </div>
+                                            </div>
+                                            <div class="absolute inset-0 z-30 bg-white opacity-80 text-indicator text-sm flex items-center justify-center text-center" x-show=" oddChange().ErrorStatus !== 0"><span x-show="typeof oddChange().ErrorMessage !== 'undefined'" x-html="oddChange().ErrorMessage"></span></div>
+                                        </div>
+                                    </template>
+                                    <div class="absolute inset-0 z-20 bg-white opacity-80 text-light-300 text-xs font-bold flex items-center justify-center text-center" x-show="event.error && event.errorMessage !== undefined" x-html="event.errorMessage"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div x-show="model.BetSlip.Events.length > 0">
+
+                    @* Singles winning tables *@
+                    <div class="mb-2" x-show="system === 4">
+                        <div class="bg-light-100 rounded-t-lg flex items-center p-2 text-brand-dark mb-px">
+                            <div class="flex-grow">Amount:</div>
+                            <div class="ml-auto text-right" x-text="calculateSingleTotalAmount"></div>
+                        </div>
+                        <div class="bg-light-100 flex p-2 text-brand-dark mb-px">
+                            <div>Total Odds</div>
+                            <div class="ml-auto text-right" x-text="winningTotalOdd('single')"></div>
+                        </div>
+                        <div class="bg-light-200 rounded-b-lg flex px-2 py-3 text-brand-dark font-bold">
+                            <div>Possible Win:</div>
+                            <div class="ml-auto text-right text-indicator" x-text="common.parse(singleTotalAmount*singleTotalOdd).output"></div>
+                        </div>
+                    </div>
+                    
+                    @* Parlay winning tables *@
+                    <div class="mb-2 rounded-lg" x-show="system === 1">
+                        <div class="bg-light-100 rounded-t-lg flex items-center p-1 pl-2 text-brand-dark mb-px">
+                            <div class="flex-grow">Amount:</div>
+                            <div class="ml-auto text-right flex">
+                                <div class="bg-white rounded-l-full p-1 h-9 pr-3 relative z-0 flex items-center transition-all overflow-hidden" :class="Freebet.active ? '-mr-2' : '-mr-14'" @*x-transition x-show="Freebet.active"*@>
+                                    <span class="bg-secondary w-7 h-7 align-middle rounded-full inline-flex items-center justify-center">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2229.000000 2229.000000" preserveAspectRatio="xMidYMid meet" class="inline w-5 h-5 text-brand">
+                                            <g transform="translate(0.000000,2229.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                                <path d="M3315 19100 c-398 -39 -777 -266 -1002 -600 -36 -53 -111 -202 -141 -280 -34 -86 -60 -206 -72 -319 -14 -144 -14 -13518 0 -13662 33 -329 192 -640 436 -854 195 -170 394 -270 654 -327 l105 -23 7870 0 c7523 0 7874 1 7965 18 474 89 853 423 999 880 69 217 64 64 68 2119 l4 1858 -2933 3 -2933 2 -80 22 c-224 60 -398 171 -530 336 -108 135 -185 308 -204 459 -6 43 -11 1014 -13 2413 l-3 2340 22 85 c57 223 169 401 336 535 132 105 304 183 453 205 45 6 1106 10 2977 10 l2908 0 -4 1813 c-4 2005 1 1857 -68 2074 -145 453 -515 782 -989 880 -81 16 -491 17 -7915 19 -4307 1 -7866 -2 -7910 -6z m870 -3263 c121 -68 240 -135 265 -149 25 -14 135 -76 245 -138 110 -62 306 -172 435 -245 384 -217 985 -556 1295 -730 22 -12 162 -91 310 -175 233 -131 779 -438 855 -481 14 -7 41 -23 60 -35 19 -11 170 -97 335 -189 165 -92 316 -177 335 -188 19 -11 141 -79 270 -152 129 -72 253 -142 275 -155 163 -92 284 -160 298 -165 9 -4 46 15 94 48 43 29 184 125 313 212 129 87 316 213 415 280 99 67 284 191 410 277 127 85 306 206 399 269 93 63 293 197 445 300 359 241 977 658 1396 941 110 74 304 205 430 290 127 85 278 187 337 227 60 40 115 71 123 69 15 -3 -26 -66 -409 -632 -67 -98 -128 -189 -136 -202 -8 -13 -83 -124 -166 -246 -83 -123 -226 -335 -319 -473 -92 -137 -210 -311 -260 -385 -98 -144 -299 -442 -533 -790 -80 -118 -159 -235 -176 -260 -17 -25 -35 -53 -41 -62 -5 -9 -60 -90 -121 -180 -61 -90 -159 -235 -219 -323 -59 -88 -122 -180 -139 -205 -17 -25 -35 -53 -41 -62 -5 -9 -46 -70 -91 -135 -44 -65 -122 -180 -174 -256 l-93 -139 26 -51 c27 -54 55 -104 135 -242 25 -44 56 -98 68 -120 28 -50 280 -498 308 -546 12 -20 67 -119 124 -220 56 -101 114 -204 129 -229 38 -65 62 -108 93 -165 15 -27 75 -133 132 -235 57 -102 109 -194 115 -205 7 -11 28 -48 47 -81 20 -34 94 -165 164 -290 71 -126 137 -245 149 -264 20 -35 276 -490 318 -565 74 -134 290 -515 305 -540 10 -16 28 -48 40 -70 167 -299 264 -472 270 -480 4 -5 21 -35 38 -65 33 -60 280 -500 317 -565 114 -198 163 -290 159 -297 -8 -12 -37 -10 -59 6 -11 7 -45 27 -75 43 -59 32 -649 364 -715 403 -22 12 -130 73 -240 135 -110 61 -218 122 -240 135 -22 13 -58 33 -80 45 -22 12 -123 69 -225 127 -102 57 -225 127 -274 154 -48 27 -105 58 -125 70 -20 11 -149 84 -287 161 -138 78 -297 168 -355 201 -57 33 -196 111 -309 174 -335 188 -760 427 -832 469 -37 22 -212 121 -390 220 -178 100 -341 192 -363 204 -22 12 -148 83 -280 157 -275 155 -296 167 -348 198 -40 24 -58 22 -102 -14 -11 -9 -121 -84 -245 -168 -124 -83 -326 -219 -448 -302 -123 -83 -235 -158 -248 -166 -12 -8 -116 -78 -230 -155 -113 -77 -217 -147 -230 -155 -13 -8 -130 -87 -261 -176 -333 -224 -630 -425 -968 -652 -159 -108 -357 -241 -440 -297 -183 -124 -692 -467 -990 -667 -121 -81 -228 -148 -238 -148 -14 0 -7 16 35 75 29 41 64 93 78 115 27 42 268 401 471 698 68 101 128 191 134 200 5 9 19 31 31 47 27 40 211 310 416 615 91 135 212 315 270 400 57 85 180 268 273 405 93 138 228 338 300 445 72 107 221 328 330 490 109 162 223 331 254 375 31 44 61 87 66 97 6 10 67 102 138 207 l128 189 -35 58 c-30 52 -221 391 -282 499 -45 81 -287 511 -309 550 -58 101 -600 1064 -667 1185 -17 30 -34 60 -38 65 -7 8 -120 210 -225 400 -15 28 -43 77 -63 110 -19 33 -109 193 -199 355 -91 162 -169 300 -173 305 -4 6 -65 114 -135 240 -70 127 -131 235 -135 240 -4 6 -20 33 -36 60 -51 92 -342 611 -368 656 -12 20 -67 119 -124 220 -131 235 -136 243 -144 247 -16 7 -8 42 10 42 9 0 116 -56 237 -123z"/>
+                                                <path d="M15303 13330 c-28 -4 -85 -18 -125 -30 -375 -114 -640 -430 -688 -820 -14 -120 -14 -2614 1 -2735 48 -394 336 -726 719 -827 l85 -23 2740 0 2740 0 85 22 c118 31 272 110 366 187 134 109 220 224 285 380 78 188 73 83 77 1566 3 1348 1 1437 -34 1575 -21 81 -94 233 -149 311 -128 179 -300 300 -530 371 l-90 28 -2715 1 c-1493 1 -2738 -2 -2767 -6z m1990 -1121 c222 -44 393 -136 565 -303 181 -176 286 -378 327 -629 45 -280 -19 -567 -184 -817 -87 -133 -278 -298 -436 -378 -137 -68 -332 -112 -500 -112 -314 0 -599 122 -817 348 -93 97 -136 159 -195 277 -90 180 -128 353 -120 545 6 148 28 249 82 382 59 148 123 246 233 360 154 159 330 263 529 314 184 46 327 50 516 13z"/>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <input type="text" class="block w-20 border-none rounded-lg text-right px-2 py-1 h-9 relative z-10 disabled:text-light-300" 
+                                    :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'parlayAmount','ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'parlayAmount', 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                    :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" x-model="parlayAmount" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)" 
+                                    name="Amount"
+                                    @@click="keyboard().toggle('parlayAmount')" 
+                                    :disabled="BBError"
+                                    :readonly="common.isTouch" />
+                            </div>
+                        </div>
+                        <div class="bg-light-100 flex p-2 text-brand-dark mb-px">
+                            <div>Total Odds</div>
+                            <div class="ml-auto text-right" :class="{ 'text-brand font-bold' : Freebet.active }" x-text="winningTotalOdd('parlay')"></div>
+                        </div>
+                        <div class="bg-light-200 rounded-b-lg flex px-2 py-3 text-brand-dark font-bold">
+                            <div>Possible Win:</div>
+                            <div class="ml-auto text-right text-indicator" x-text="common.parse((common.parse.toNum(parlayAmount)*parlayTotalOdd).toFixed(2)).output"></div>
+                        </div>
+                    </div>
+
+                    @* System winning tables *@
+                    <div class="mb-2" x-show="system === 3" @@click="console.log(systemCombinationsSelected + '/' + systemCombinationsAll, betColAmount, betMulAmount, combinationBetAmount, 'systemXBets: ' + systemXBets)">
+                        <div class="bg-light-100 rounded-t-lg flex items-center p-1 pl-2 text-brand-dark mb-px">
+                            <div class="flex-grow">Stake Per Col</div>
+                            <div class="ml-auto text-right">
+                                <input type="text" class="block w-20 border-none rounded-md text-right px-2 py-1 h-9" 
+                                :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'stakePerCol','ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'stakePerCol', 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" x-model="stakePerCol" @@keyup="setStakePerCol" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                name="betAmountToAllCombinationsId"
+                                id="stakePerCol" 
+                                @@click="keyboard().toggle('stakePerCol')" 
+                                :readonly="common.isTouch" />
+                            </div>
+                        </div>
+                        <div class="bg-light-100 flex items-center p-1 pl-2 text-brand-dark mb-px">
+                            <div>Total Stake For Column</div>
+                            <div class="ml-auto text-right">
+                                <input type="text" class="block w-20 border-none rounded-md text-right px-2 py-1 h-9" 
+                                :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'stakeTotalCols','ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'stakeTotalCols', 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" x-model="stakeTotalCols" @@keyup="setStakeTotalCols" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                name="betAmountDividedToCombinationsId"
+                                id="stakeTotalCols"
+                                @@click="keyboard().toggle('stakeTotalCols')" 
+                                :readonly="common.isTouch" />
+                            </div>
+                        </div>
+                        <div class="bg-light-100 flex items-center p-1 pl-2 text-brand-dark mb-px">
+                            <div>Total Stake</div>
+                            <div class="ml-auto text-right">
+                                <input type="text" class="block w-20 border-none rounded-md text-right px-2 py-1 h-9" 
+                                :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'stakeTotalBets','ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'stakeTotalBets', 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" x-model="stakeTotalBets" @@keyup="setStakeTotalBets" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                name="betAmountDividedToBetsId"
+                                id="stakeTotalBets"
+                                @@click="keyboard().toggle('stakeTotalBets')" 
+                                :readonly="common.isTouch" />
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="firstComb" :value="model.Combinations.length > 0 && model.Combinations[0].CounterLines + model.BetSlip.NumberOfBankers" />
+                        <input type="hidden" name="lastComb" :value="model.Combinations.length > 0 && model.Combinations.slice(-1)[0].CounterLines + model.BetSlip.NumberOfBankers" />
+                        <div class="bg-white relative">
+                            <input type="hidden" name="SA" :value="function(){ return systemCombinationsSelected.length === systemCombinationsAll.length }" />
+                            <button type="button" class="p-2 absolute right-0 top-0 text-sm cursor-pointer" @@click="systemCombinationsSelected.length !== systemCombinationsAll.length ? selectCombination('all') : unselectAll" :class="systemCombinationsSelected.length !== systemCombinationsAll.length ? 'text-brand' : 'text-light-300'" x-text="systemCombinationsSelected.length !== systemCombinationsAll.length ? 'Select All' : 'Deselect All'"></button>
+                        </div>
+                        <template x-for="(combination, index) in model.Combinations.sort((a, b) => a.CounterLines - b.CounterLines)">
+                            <div>
+                                <input type="hidden" :name="`Combinations[${index}].CounterLines`" :value="combination.CounterLines" />
+                                <input type="hidden" :name="`Combinations[${index}].BetColAmount`" :value="betColAmount[combination.CounterLines]" />
+                                <input type="hidden" :name="`Combinations[${index}].BetMulAmount`" :value="betMulAmount[combination.CounterLines]" />
+                                <input type="hidden" :name="`Combinations[${index}].CombinationsProduced`" :value="combination.CombinationsProduced" />
+                                <input type="hidden" :name="`Combinations[${index}].MinimumMultpilierWithBonus`" :value="combination.MinimumMultpilierWithBonus" />
+                                <input type="hidden" :name="`Combinations[${index}].MaximumMultiplierWithBonus`" :value="combination.MaximumMultiplierWithBonus" />
+                                <div class="bg-white flex items-center px-2" @@click.debounce="selectCombination(combination.CounterLines)">
+                                    <input type="checkbox" :id="'ch' + (combination.CounterLines + model.BetSlip.NumberOfBankers)" :name="'ch' + (combination.CounterLines + model.BetSlip.NumberOfBankers)" class="h-4 w-4 rounded border-brand focus:ring-brand cursor-pointer" :value="combination.CounterLines" x-model="systemCombinationsSelected">
+                                    <label :for="'ch' + (combination.CounterLines + model.BetSlip.NumberOfBankers)" class="p-2 block text-sm text-brand cursor-pointer" x-text="(combination.CounterLines + model.BetSlip.NumberOfBankers) + ' Folds Of ' + combination.TotalLines"></label>
+                                </div>
+                                <div class="pb-1 grid grid-cols-5 items-center">
+                                    <input type="text" class="block bg-light-100 border-none rounded-md text-right px-2 py-1 h-9 focus:ring-brand" :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" @@keyup="setBetColAmount($el.value, combination.CounterLines)" x-model="betColAmount[combination.CounterLines]" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                    :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'betColAmount.'+combination.CounterLines,'ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'betColAmount.'+combination.CounterLines, 'focus:ring-2 focus:ring-brand' : !common.isTouch }"
+                                    @@click="keyboard().toggle('betColAmount.'+combination.CounterLines)" 
+                                    :name="`Combinations_${index}__BetColAmountView`"
+                                    :id="'betColAmount.'+combination.CounterLines"
+                                    :readonly="common.isTouch" />
+                                    <div class="text-xs text-light-400 text-center">x<span x-text="systemXCols[combination.CounterLines]"></span> Col=</div>
+                                    <input type="text" class="block bg-light-100 border-none rounded-md text-right px-2 py-1 h-9 focus:ring-brand" :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" @@keyup="setBetMulAmount($el.value, combination.CounterLines)" x-model="betMulAmount[combination.CounterLines]" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                    :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'betMulAmount.'+combination.CounterLines,'ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'betMulAmount.'+combination.CounterLines, 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                    @@click="keyboard().toggle('betMulAmount.'+combination.CounterLines)" 
+                                    :name="`Combinations_${index}__BetMulAmountView`"
+                                    :id="'betMulAmount.'+combination.CounterLines"
+                                    :readonly="common.isTouch" />
+                                    <div class="text-xs text-light-400 text-center">x<span x-text="systemXBets"></span> Bets=</div>
+                                    <input type="text" class="block bg-light-100 border-none rounded-md text-right px-2 py-1 h-9 focus:ring-brand" :placeholder="'0'+common.cultureInfo.decimalSeparator+'00'" @@keyup="setCombinationBetAmount($el.value, combination.CounterLines)" x-model="combinationBetAmount[combination.CounterLines]" x-mask:dynamic="$money($input, common.cultureInfo.decimalSeparator)"
+                                    :class="{ 'ring-2 focus:ring-2 ring-brand' : common.isTouch && $store.betslip.keyboard.input === 'combinationBetAmount.'+combination.CounterLines,'ring-0 focus:ring-0' : common.isTouch && $store.betslip.keyboard.input !== 'combinationBetAmount.'+combination.CounterLines, 'focus:ring-2 focus:ring-brand' : !common.isTouch }" 
+                                    @@click="keyboard().toggle('combinationBetAmount.'+combination.CounterLines)" 
+                                    :name="`Combinations_${index}__BetAmountView`"
+                                    :id="'combinationBetAmount.'+combination.CounterLines"
+                                    :readonly="common.isTouch" />
+                                </div>
+                                <div class="text-xs text-light-300 px-2" x-text="`Min Col ${common.parse(combination.MinimumMultpilierWithBonus).output} Max Col ${common.parse(combination.MaximumMultiplierWithBonus).output}`"></div>
+                                <template x-if="combination.BonusMin > 0 && combination.BonusMin > 0">
+                                    <div class="text-xs text-light-400 px-2" x-text="`Bonus Min:${combination.BonusMin}% Bonus Max:${combination.BonusMax}%`"></div>
+                                </template>
+                            </div>
+                        </template>
+                        <input type="hidden" name="betMultipleAmount" :value="betColAmount[model.Combinations.length - 1]" />
+                        <input type="hidden" name="betMultipleAmountTotal" :value="betColAmount[model.Combinations.length - 1] * systemXBets" />
+
+                        <div class="bg-light-100 flex items-center p-2 text-brand-dark mb-px mt-1">
+                            <div class="flex-grow">Totals:</div>
+                            <div class="ml-auto text-right" x-text="`${totalColsInBet()} Cols In ${systemCombinationsAll.length} Bet`"></div>
+                        </div>
+                        <div class="bg-light-100 rounded-b-lg flex items-center px-2 py-3 text-brand-dark font-bold">
+                            <div>Amount:</div>
+                            <div class="ml-auto text-right" x-text="common.parse(systemTotalAmount()).output"></div>
+                        </div>
+                    </div>
+
+                    @* FreeBet button *@
+                    <template x-if="system === 1 && Freebet.enabled">
+                        <div class="relative">
+                            <input type="checkbox" name="freebet" id="freebet" x-model="Freebet.active" class="absolute h-0 opacity-0" :value="Freebet.active.toString()" />
+                            <button type="button" class="w-full relative bg-secondary h-10 rounded-full text-brand-dark flex items-center pl-2 pr-3 border-2 disabled:opacity-80 disabled:text-light-300 mb-2 transition" :class="Freebet.active ? 'border-brand' : 'border-secondary'" x-show="system === 1 && Freebet.enabled" @@click="Freebet.active = !Freebet.active">
+                                <span>
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2229.000000 2229.000000" preserveAspectRatio="xMidYMid meet" class="w-7 h-7 transition" :class="Freebet.active ? 'text-brand' : 'text-light-300'">
+                                        <g transform="translate(0.000000,2229.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                            <path d="M3315 19100 c-398 -39 -777 -266 -1002 -600 -36 -53 -111 -202 -141 -280 -34 -86 -60 -206 -72 -319 -14 -144 -14 -13518 0 -13662 33 -329 192 -640 436 -854 195 -170 394 -270 654 -327 l105 -23 7870 0 c7523 0 7874 1 7965 18 474 89 853 423 999 880 69 217 64 64 68 2119 l4 1858 -2933 3 -2933 2 -80 22 c-224 60 -398 171 -530 336 -108 135 -185 308 -204 459 -6 43 -11 1014 -13 2413 l-3 2340 22 85 c57 223 169 401 336 535 132 105 304 183 453 205 45 6 1106 10 2977 10 l2908 0 -4 1813 c-4 2005 1 1857 -68 2074 -145 453 -515 782 -989 880 -81 16 -491 17 -7915 19 -4307 1 -7866 -2 -7910 -6z m870 -3263 c121 -68 240 -135 265 -149 25 -14 135 -76 245 -138 110 -62 306 -172 435 -245 384 -217 985 -556 1295 -730 22 -12 162 -91 310 -175 233 -131 779 -438 855 -481 14 -7 41 -23 60 -35 19 -11 170 -97 335 -189 165 -92 316 -177 335 -188 19 -11 141 -79 270 -152 129 -72 253 -142 275 -155 163 -92 284 -160 298 -165 9 -4 46 15 94 48 43 29 184 125 313 212 129 87 316 213 415 280 99 67 284 191 410 277 127 85 306 206 399 269 93 63 293 197 445 300 359 241 977 658 1396 941 110 74 304 205 430 290 127 85 278 187 337 227 60 40 115 71 123 69 15 -3 -26 -66 -409 -632 -67 -98 -128 -189 -136 -202 -8 -13 -83 -124 -166 -246 -83 -123 -226 -335 -319 -473 -92 -137 -210 -311 -260 -385 -98 -144 -299 -442 -533 -790 -80 -118 -159 -235 -176 -260 -17 -25 -35 -53 -41 -62 -5 -9 -60 -90 -121 -180 -61 -90 -159 -235 -219 -323 -59 -88 -122 -180 -139 -205 -17 -25 -35 -53 -41 -62 -5 -9 -46 -70 -91 -135 -44 -65 -122 -180 -174 -256 l-93 -139 26 -51 c27 -54 55 -104 135 -242 25 -44 56 -98 68 -120 28 -50 280 -498 308 -546 12 -20 67 -119 124 -220 56 -101 114 -204 129 -229 38 -65 62 -108 93 -165 15 -27 75 -133 132 -235 57 -102 109 -194 115 -205 7 -11 28 -48 47 -81 20 -34 94 -165 164 -290 71 -126 137 -245 149 -264 20 -35 276 -490 318 -565 74 -134 290 -515 305 -540 10 -16 28 -48 40 -70 167 -299 264 -472 270 -480 4 -5 21 -35 38 -65 33 -60 280 -500 317 -565 114 -198 163 -290 159 -297 -8 -12 -37 -10 -59 6 -11 7 -45 27 -75 43 -59 32 -649 364 -715 403 -22 12 -130 73 -240 135 -110 61 -218 122 -240 135 -22 13 -58 33 -80 45 -22 12 -123 69 -225 127 -102 57 -225 127 -274 154 -48 27 -105 58 -125 70 -20 11 -149 84 -287 161 -138 78 -297 168 -355 201 -57 33 -196 111 -309 174 -335 188 -760 427 -832 469 -37 22 -212 121 -390 220 -178 100 -341 192 -363 204 -22 12 -148 83 -280 157 -275 155 -296 167 -348 198 -40 24 -58 22 -102 -14 -11 -9 -121 -84 -245 -168 -124 -83 -326 -219 -448 -302 -123 -83 -235 -158 -248 -166 -12 -8 -116 -78 -230 -155 -113 -77 -217 -147 -230 -155 -13 -8 -130 -87 -261 -176 -333 -224 -630 -425 -968 -652 -159 -108 -357 -241 -440 -297 -183 -124 -692 -467 -990 -667 -121 -81 -228 -148 -238 -148 -14 0 -7 16 35 75 29 41 64 93 78 115 27 42 268 401 471 698 68 101 128 191 134 200 5 9 19 31 31 47 27 40 211 310 416 615 91 135 212 315 270 400 57 85 180 268 273 405 93 138 228 338 300 445 72 107 221 328 330 490 109 162 223 331 254 375 31 44 61 87 66 97 6 10 67 102 138 207 l128 189 -35 58 c-30 52 -221 391 -282 499 -45 81 -287 511 -309 550 -58 101 -600 1064 -667 1185 -17 30 -34 60 -38 65 -7 8 -120 210 -225 400 -15 28 -43 77 -63 110 -19 33 -109 193 -199 355 -91 162 -169 300 -173 305 -4 6 -65 114 -135 240 -70 127 -131 235 -135 240 -4 6 -20 33 -36 60 -51 92 -342 611 -368 656 -12 20 -67 119 -124 220 -131 235 -136 243 -144 247 -16 7 -8 42 10 42 9 0 116 -56 237 -123z"/>
+                                            <path d="M15303 13330 c-28 -4 -85 -18 -125 -30 -375 -114 -640 -430 -688 -820 -14 -120 -14 -2614 1 -2735 48 -394 336 -726 719 -827 l85 -23 2740 0 2740 0 85 22 c118 31 272 110 366 187 134 109 220 224 285 380 78 188 73 83 77 1566 3 1348 1 1437 -34 1575 -21 81 -94 233 -149 311 -128 179 -300 300 -530 371 l-90 28 -2715 1 c-1493 1 -2738 -2 -2767 -6z m1990 -1121 c222 -44 393 -136 565 -303 181 -176 286 -378 327 -629 45 -280 -19 -567 -184 -817 -87 -133 -278 -298 -436 -378 -137 -68 -332 -112 -500 -112 -314 0 -599 122 -817 348 -93 97 -136 159 -195 277 -90 180 -128 353 -120 545 6 148 28 249 82 382 59 148 123 246 233 360 154 159 330 263 529 314 184 46 327 50 516 13z"/>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="flex-1 text-right">
+                                    <span class="text-sm" x-text="Freebet.active ? 'Using' : 'Use'"></span> 
+                                    <span class="font-bold" :class="{ 'text-brand' : Freebet.active }">Free Bet</span><span x-text="Freebet.active ? ':' : '!'"></span>
+                                </span>
+                                <span class="leading-none w-2/5">
+                                    <span class="block text-right text-xxs mb-px">Balance</span>
+                                    <span class="block text-right text-sm"><span x-show="Freebet.active"><span class="font-bold" :class="{ 'text-brand' : Freebet.active, 'text-light-400' : common.parse.toNum(parlayAmount) === 0, 'text-indicator' : common.parse.toNum(parlayAmount) > Number(Freebet.balance) }" x-text="parlayAmount !== '' ? common.parse(common.parse.toNum(parlayAmount)).output : '0'+common.cultureInfo.decimalSeparator+'00'"></span>/</span><span class="font-bold" x-text="common.parse(Freebet.balance).output"></span></span>
+                                </span>
+                                <span class="absolute right-3 top-0 z-10 bg-secondary text-indicator text-xxs text-center" x-show="Freebet.active && common.parse.toNum(parlayAmount) > Number(Freebet.balance)">You don't have enough balance</span>
+                            </button>
+                        </div>
+                    </template>
+
+                    @* OddsChange dialog *@
+                    <div class="mt-4" x-show="oddsChanged">
+                        <p class="mb-2 px-8 text-sm text-brand text-center">Odds of the events have changed.<br>Do you accept the changes?</p>
+                        <button type="button" class="w-4/5 mx-auto bg-brand h-9 rounded-full text-light-100 flex items-center justify-center" @@click="oddsChanged = false">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-4 mr-1">
+                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Accept
+                        </button>
+                    </div>
+
+                    <input type="hidden" name="disabled" 
+                        :value="slipInvalid() ? 1 : 0" />
+                    <button type="button" @*type="submit"*@ class="w-full bg-brand h-10 rounded-full text-light-100 font-bold flex items-center justify-center uppercase relative z-40 transition disabled:saturate-50 disabled:text-light-300 group" 
+                        :disabled="slipInvalid()" 
+                        @@click="formSubmitTemp" x-show="!oddsChanged">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2229.000000 2229.000000" preserveAspectRatio="xMidYMid meet" class="inline w-4 h-4 text-secondary align-middle -ml-5 mr-1 group-disabled:opacity-50" x-show="Freebet.active">
+                            <g transform="translate(0.000000,2229.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                <path d="M3315 19100 c-398 -39 -777 -266 -1002 -600 -36 -53 -111 -202 -141 -280 -34 -86 -60 -206 -72 -319 -14 -144 -14 -13518 0 -13662 33 -329 192 -640 436 -854 195 -170 394 -270 654 -327 l105 -23 7870 0 c7523 0 7874 1 7965 18 474 89 853 423 999 880 69 217 64 64 68 2119 l4 1858 -2933 3 -2933 2 -80 22 c-224 60 -398 171 -530 336 -108 135 -185 308 -204 459 -6 43 -11 1014 -13 2413 l-3 2340 22 85 c57 223 169 401 336 535 132 105 304 183 453 205 45 6 1106 10 2977 10 l2908 0 -4 1813 c-4 2005 1 1857 -68 2074 -145 453 -515 782 -989 880 -81 16 -491 17 -7915 19 -4307 1 -7866 -2 -7910 -6z m870 -3263 c121 -68 240 -135 265 -149 25 -14 135 -76 245 -138 110 -62 306 -172 435 -245 384 -217 985 -556 1295 -730 22 -12 162 -91 310 -175 233 -131 779 -438 855 -481 14 -7 41 -23 60 -35 19 -11 170 -97 335 -189 165 -92 316 -177 335 -188 19 -11 141 -79 270 -152 129 -72 253 -142 275 -155 163 -92 284 -160 298 -165 9 -4 46 15 94 48 43 29 184 125 313 212 129 87 316 213 415 280 99 67 284 191 410 277 127 85 306 206 399 269 93 63 293 197 445 300 359 241 977 658 1396 941 110 74 304 205 430 290 127 85 278 187 337 227 60 40 115 71 123 69 15 -3 -26 -66 -409 -632 -67 -98 -128 -189 -136 -202 -8 -13 -83 -124 -166 -246 -83 -123 -226 -335 -319 -473 -92 -137 -210 -311 -260 -385 -98 -144 -299 -442 -533 -790 -80 -118 -159 -235 -176 -260 -17 -25 -35 -53 -41 -62 -5 -9 -60 -90 -121 -180 -61 -90 -159 -235 -219 -323 -59 -88 -122 -180 -139 -205 -17 -25 -35 -53 -41 -62 -5 -9 -46 -70 -91 -135 -44 -65 -122 -180 -174 -256 l-93 -139 26 -51 c27 -54 55 -104 135 -242 25 -44 56 -98 68 -120 28 -50 280 -498 308 -546 12 -20 67 -119 124 -220 56 -101 114 -204 129 -229 38 -65 62 -108 93 -165 15 -27 75 -133 132 -235 57 -102 109 -194 115 -205 7 -11 28 -48 47 -81 20 -34 94 -165 164 -290 71 -126 137 -245 149 -264 20 -35 276 -490 318 -565 74 -134 290 -515 305 -540 10 -16 28 -48 40 -70 167 -299 264 -472 270 -480 4 -5 21 -35 38 -65 33 -60 280 -500 317 -565 114 -198 163 -290 159 -297 -8 -12 -37 -10 -59 6 -11 7 -45 27 -75 43 -59 32 -649 364 -715 403 -22 12 -130 73 -240 135 -110 61 -218 122 -240 135 -22 13 -58 33 -80 45 -22 12 -123 69 -225 127 -102 57 -225 127 -274 154 -48 27 -105 58 -125 70 -20 11 -149 84 -287 161 -138 78 -297 168 -355 201 -57 33 -196 111 -309 174 -335 188 -760 427 -832 469 -37 22 -212 121 -390 220 -178 100 -341 192 -363 204 -22 12 -148 83 -280 157 -275 155 -296 167 -348 198 -40 24 -58 22 -102 -14 -11 -9 -121 -84 -245 -168 -124 -83 -326 -219 -448 -302 -123 -83 -235 -158 -248 -166 -12 -8 -116 -78 -230 -155 -113 -77 -217 -147 -230 -155 -13 -8 -130 -87 -261 -176 -333 -224 -630 -425 -968 -652 -159 -108 -357 -241 -440 -297 -183 -124 -692 -467 -990 -667 -121 -81 -228 -148 -238 -148 -14 0 -7 16 35 75 29 41 64 93 78 115 27 42 268 401 471 698 68 101 128 191 134 200 5 9 19 31 31 47 27 40 211 310 416 615 91 135 212 315 270 400 57 85 180 268 273 405 93 138 228 338 300 445 72 107 221 328 330 490 109 162 223 331 254 375 31 44 61 87 66 97 6 10 67 102 138 207 l128 189 -35 58 c-30 52 -221 391 -282 499 -45 81 -287 511 -309 550 -58 101 -600 1064 -667 1185 -17 30 -34 60 -38 65 -7 8 -120 210 -225 400 -15 28 -43 77 -63 110 -19 33 -109 193 -199 355 -91 162 -169 300 -173 305 -4 6 -65 114 -135 240 -70 127 -131 235 -135 240 -4 6 -20 33 -36 60 -51 92 -342 611 -368 656 -12 20 -67 119 -124 220 -131 235 -136 243 -144 247 -16 7 -8 42 10 42 9 0 116 -56 237 -123z"/>
+                                <path d="M15303 13330 c-28 -4 -85 -18 -125 -30 -375 -114 -640 -430 -688 -820 -14 -120 -14 -2614 1 -2735 48 -394 336 -726 719 -827 l85 -23 2740 0 2740 0 85 22 c118 31 272 110 366 187 134 109 220 224 285 380 78 188 73 83 77 1566 3 1348 1 1437 -34 1575 -21 81 -94 233 -149 311 -128 179 -300 300 -530 371 l-90 28 -2715 1 c-1493 1 -2738 -2 -2767 -6z m1990 -1121 c222 -44 393 -136 565 -303 181 -176 286 -378 327 -629 45 -280 -19 -567 -184 -817 -87 -133 -278 -298 -436 -378 -137 -68 -332 -112 -500 -112 -314 0 -599 122 -817 348 -93 97 -136 159 -195 277 -90 180 -128 353 -120 545 6 148 28 249 82 382 59 148 123 246 233 360 154 159 330 263 529 314 184 46 327 50 516 13z"/>
+                            </g>
+                        </svg>
+                        <span x-show="!loading">Place Bet</span>
+                        <svg class="animate-spin h-5 w-5 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" x-show="loading">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-light-300 text-center px-4 py-12" x-show="model.BetSlip.Events.length === 0">Empty Coupon</div>
+                <partial name="_Keyboard"/>
+            </div>
+            <div class="absolute inset-0 z-30 bg-white/40 rounded-24 cursor-wait" x-show="loading"></div>
+            <partial name="_TestBetslipCart"/>
+        </form>
+        </div>
+        @* Shop forms *@
+        <template x-if="typeof isShop !== 'undefined' && isShop && $store.slipTab.t === 1">
+            <div class="mt-4">
+                <div class="grid grid-cols-12 gap-2 items-center mb-4">
+                    <div class="col-span-3 text-right text-light-400">Booked:</div>
+                    <input type="text" name="bookBetFind" placeholder="" class="col-span-5 block border-none rounded-lg px-2 py-1 h-9 ring-2 ring-light-200 focus:ring-2 focus:ring-light-300" />
+                    <button class="col-span-4 bg-brand text-light-100 rounded-lg text-sm h-full transition hover:bg-brand-dark">Find</button>
+                </div>
+                <div class="grid grid-cols-12 gap-2 items-center">
+                    <div class="col-span-3 text-right text-light-400">Search:</div>
+                    <input type="text" name="searchAnyBet" placeholder="" class="col-span-5 block border-none rounded-lg px-2 py-1 h-9 ring-2 ring-light-200 focus:ring-2 focus:ring-light-300" />
+                    <button class="col-span-4 bg-brand text-light-100 rounded-lg text-sm h-full transition hover:bg-brand-dark">Search bet</button>
+                </div>
+            </div>
+        </template>
+        <partial name="_BetReceipt" />
+    </div>
+
+    <partial name="_ErrorMessage"/>
+    <partial name="_UnsettledBets" />
+</div>

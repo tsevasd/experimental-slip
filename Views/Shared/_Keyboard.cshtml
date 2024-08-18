@@ -1,0 +1,36 @@
+﻿<div class="fixed z-50 bottom-0 left-0 w-full bg-light-100 shadow-lg p-1 sm:max-w-xl sm:left-1/2 sm:-translate-x-1/2" x-transition x-show="common.isTouch && $store.betslip.keyboard.input !== ''">
+    <div @@click="keyboard().action($event.target.value)" @*@@click.outside="if ($event.target.tagName.toLowerCase() !== 'input') keyboard().toggle('')"*@>
+        <div class="grid grid-cols-7 gap-1 mb-1">
+            <template x-for="amount in keyboard().preset.amounts">
+                <button type="button" class="bg-light-200 rounded-2xl h-9 py-2 text-brand text-xxs font-bold text-center shadow active:bg-brand-light active:text-light-100"
+                        :value="`+${amount}`"
+                        x-text="`+${common.parse(amount).output}`"></button>
+            </template>
+            <button type="button" class="h-9 flex items-center justify-center text-light-300 active:bg-transparent active:text-brand" @@click="keyboard().toggle('')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+        <div class="grid grid-cols-3 gap-px">
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="7">7</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="8">8</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="9">9</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="4">4</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="5">5</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="6">6</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="1">1</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="2">2</button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="3">3</button>
+            <button type="button" class="bg-brand-dark rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" x-text="common.cultureInfo.decimalSeparator" :value="common.cultureInfo.decimalSeparator"></button>
+            <button type="button" class="bg-brand rounded-full h-8 py-2 text-light-100 text-xs text-center active:bg-brand-light" value="0">0</button>
+            <div class="relative bg-brand-dark rounded-full h-8 pt-0.5 text-light-100 text-center">
+                <button type="button" class="absolute left-0 top-0 w-full h-8 z-10 rounded-full active:bg-brand-light" value="back"></button>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block relative z-0" value="back">
+                    <path fill-rule="evenodd" d="M2.515 10.674a1.875 1.875 0 000 2.652L8.89 19.7c.352.351.829.549 1.326.549H19.5a3 3 0 003-3V6.75a3 3 0 00-3-3h-9.284c-.497 0-.974.198-1.326.55l-6.375 6.374zM12.53 9.22a.75.75 0 10-1.06 1.06L13.19 12l-1.72 1.72a.75.75 0 101.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 101.06-1.06L15.31 12l1.72-1.72a.75.75 0 10-1.06-1.06l-1.72 1.72-1.72-1.72z" clip-rule="evenodd" value="back" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed inset-0 z-40" x-show="common.isTouch && $store.betslip.keyboard.input !== ''" @@click="keyboard().toggle('')"></div>

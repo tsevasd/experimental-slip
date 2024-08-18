@@ -1,0 +1,122 @@
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\appsettings.Development.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\appsettings.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\package-lock.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\package.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.staticwebassets.runtime.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.exe
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.deps.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.runtimeconfig.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.dll
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.pdb
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.GeneratedMSBuildEditorConfig.editorconfig
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.AssemblyInfoInputs.cache
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.AssemblyInfo.cs
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.csproj.CoreCompileInputs.cache
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.MvcApplicationPartsAssemblyInfo.cache
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.RazorAssemblyInfo.cache
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.RazorAssemblyInfo.cs
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.build.json
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.development.json
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.Betslip.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.build.Betslip.props
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Betslip.props
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Betslip.props
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\bundle\Betslip.styles.css
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\projectbundle\Betslip.bundle.scp.css
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.dll
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\refint\Betslip.dll
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.pdb
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.genruntimeconfig.cache
+C:\Portfolio projects\Betslip\obj\Debug\net8.0\ref\Betslip.dll
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\ClientApp\package-lock.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\ClientApp\package.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\banker.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4LiveBetting.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4Multiples.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4Singles.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-BetBuilder.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-BetBuilder2.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-Failed1.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-Failed2.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\events1Single.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\events4Singles.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsBetBuilder.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBetting.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBettingInactives.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBettingMultiple.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsMultiple.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000062.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000063.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000064.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000140.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000141.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000146.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000149.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000161.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000163.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000167.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets.json
+C:\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\submitBetSlipForm-serialized.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\appsettings.Development.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\appsettings.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\ClientApp\package-lock.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\ClientApp\package.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\package-lock.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\package.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\banker.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4LiveBetting.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4Multiples.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-4Singles.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-BetBuilder.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-BetBuilder2.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-Failed1.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\BetReceipt-Failed2.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\events1Single.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\events4Singles.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsBetBuilder.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBetting.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBettingInactives.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsLiveBettingMultiple.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\eventsMultiple.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000062.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000063.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000064.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000140.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000141.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000146.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000149.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000161.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000163.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets-details23259510000167.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\openbets.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\___wwwroot\Models\submitBetSlipForm-serialized.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.staticwebassets.runtime.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.exe
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.deps.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.runtimeconfig.json
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.dll
+C:\_Live Coding Session\Portfolio projects\Betslip\bin\Debug\net8.0\Betslip.pdb
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.AssemblyInfoInputs.cache
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.AssemblyInfo.cs
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.csproj.CoreCompileInputs.cache
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.MvcApplicationPartsAssemblyInfo.cache
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.RazorAssemblyInfo.cache
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.RazorAssemblyInfo.cs
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.build.json
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.development.json
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.Betslip.Microsoft.AspNetCore.StaticWebAssets.props
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.build.Betslip.props
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Betslip.props
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Betslip.props
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\staticwebassets.pack.json
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\bundle\Betslip.styles.css
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\scopedcss\projectbundle\Betslip.bundle.scp.css
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.dll
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\refint\Betslip.dll
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.pdb
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\Betslip.genruntimeconfig.cache
+C:\_Live Coding Session\Portfolio projects\Betslip\obj\Debug\net8.0\ref\Betslip.dll

@@ -1,0 +1,493 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Betslip.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Betslip.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-4LiveBetting.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-4LiveBetting.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-4Multiples.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-4Multiples.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-4Singles.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-4Singles.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-BetBuilder.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-BetBuilder.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-BetBuilder2.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-BetBuilder2.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-Failed1.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-Failed1.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\BetReceipt-Failed2.json",
+      "PackagePath": "staticwebassets\\Models\\BetReceipt-Failed2.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\banker.json",
+      "PackagePath": "staticwebassets\\Models\\banker.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\events1Single.json",
+      "PackagePath": "staticwebassets\\Models\\events1Single.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\events4Singles.json",
+      "PackagePath": "staticwebassets\\Models\\events4Singles.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\eventsBetBuilder.json",
+      "PackagePath": "staticwebassets\\Models\\eventsBetBuilder.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\eventsLiveBetting.json",
+      "PackagePath": "staticwebassets\\Models\\eventsLiveBetting.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\eventsLiveBettingInactives.json",
+      "PackagePath": "staticwebassets\\Models\\eventsLiveBettingInactives.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\eventsLiveBettingMultiple.json",
+      "PackagePath": "staticwebassets\\Models\\eventsLiveBettingMultiple.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\eventsMultiple.json",
+      "PackagePath": "staticwebassets\\Models\\eventsMultiple.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000062.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000062.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000063.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000063.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000064.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000064.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000140.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000140.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000141.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000141.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000146.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000146.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000149.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000149.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000161.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000161.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000163.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000163.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets-details23259510000167.json",
+      "PackagePath": "staticwebassets\\Models\\openbets-details23259510000167.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\openbets.json",
+      "PackagePath": "staticwebassets\\Models\\openbets.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\Models\\submitBetSlipForm-serialized.json",
+      "PackagePath": "staticwebassets\\Models\\submitBetSlipForm-serialized.json"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\dist\\app.css",
+      "PackagePath": "staticwebassets\\dist\\app.css"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\dist\\app.js",
+      "PackagePath": "staticwebassets\\dist\\app.js"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\dist\\runtime.js",
+      "PackagePath": "staticwebassets\\dist\\runtime.js"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\dist\\vendors.js",
+      "PackagePath": "staticwebassets\\dist\\vendors.js"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game1.svg",
+      "PackagePath": "staticwebassets\\icons\\game1.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game101.svg",
+      "PackagePath": "staticwebassets\\icons\\game101.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game102.svg",
+      "PackagePath": "staticwebassets\\icons\\game102.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game104.svg",
+      "PackagePath": "staticwebassets\\icons\\game104.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game105.svg",
+      "PackagePath": "staticwebassets\\icons\\game105.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game106.svg",
+      "PackagePath": "staticwebassets\\icons\\game106.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game107.svg",
+      "PackagePath": "staticwebassets\\icons\\game107.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game11.svg",
+      "PackagePath": "staticwebassets\\icons\\game11.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game110.svg",
+      "PackagePath": "staticwebassets\\icons\\game110.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game112.svg",
+      "PackagePath": "staticwebassets\\icons\\game112.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game113.svg",
+      "PackagePath": "staticwebassets\\icons\\game113.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game114.svg",
+      "PackagePath": "staticwebassets\\icons\\game114.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game115.svg",
+      "PackagePath": "staticwebassets\\icons\\game115.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game116.svg",
+      "PackagePath": "staticwebassets\\icons\\game116.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game117.svg",
+      "PackagePath": "staticwebassets\\icons\\game117.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game118.svg",
+      "PackagePath": "staticwebassets\\icons\\game118.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game119.svg",
+      "PackagePath": "staticwebassets\\icons\\game119.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game120.svg",
+      "PackagePath": "staticwebassets\\icons\\game120.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game121.svg",
+      "PackagePath": "staticwebassets\\icons\\game121.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game122.svg",
+      "PackagePath": "staticwebassets\\icons\\game122.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game123.svg",
+      "PackagePath": "staticwebassets\\icons\\game123.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game124.svg",
+      "PackagePath": "staticwebassets\\icons\\game124.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game125.svg",
+      "PackagePath": "staticwebassets\\icons\\game125.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game126.svg",
+      "PackagePath": "staticwebassets\\icons\\game126.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game128.svg",
+      "PackagePath": "staticwebassets\\icons\\game128.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game129.svg",
+      "PackagePath": "staticwebassets\\icons\\game129.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game130.svg",
+      "PackagePath": "staticwebassets\\icons\\game130.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game131.svg",
+      "PackagePath": "staticwebassets\\icons\\game131.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game132.svg",
+      "PackagePath": "staticwebassets\\icons\\game132.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game133.svg",
+      "PackagePath": "staticwebassets\\icons\\game133.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game134.svg",
+      "PackagePath": "staticwebassets\\icons\\game134.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game135.svg",
+      "PackagePath": "staticwebassets\\icons\\game135.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game136.svg",
+      "PackagePath": "staticwebassets\\icons\\game136.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game137.svg",
+      "PackagePath": "staticwebassets\\icons\\game137.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game138.svg",
+      "PackagePath": "staticwebassets\\icons\\game138.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game139.svg",
+      "PackagePath": "staticwebassets\\icons\\game139.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game140.svg",
+      "PackagePath": "staticwebassets\\icons\\game140.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game141.svg",
+      "PackagePath": "staticwebassets\\icons\\game141.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game142.svg",
+      "PackagePath": "staticwebassets\\icons\\game142.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game143.svg",
+      "PackagePath": "staticwebassets\\icons\\game143.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game144.svg",
+      "PackagePath": "staticwebassets\\icons\\game144.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game145.svg",
+      "PackagePath": "staticwebassets\\icons\\game145.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game146.svg",
+      "PackagePath": "staticwebassets\\icons\\game146.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game147.svg",
+      "PackagePath": "staticwebassets\\icons\\game147.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game148.svg",
+      "PackagePath": "staticwebassets\\icons\\game148.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game149.svg",
+      "PackagePath": "staticwebassets\\icons\\game149.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game150.svg",
+      "PackagePath": "staticwebassets\\icons\\game150.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game151.svg",
+      "PackagePath": "staticwebassets\\icons\\game151.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game152.svg",
+      "PackagePath": "staticwebassets\\icons\\game152.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game154.svg",
+      "PackagePath": "staticwebassets\\icons\\game154.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game155.svg",
+      "PackagePath": "staticwebassets\\icons\\game155.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game156.svg",
+      "PackagePath": "staticwebassets\\icons\\game156.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game157.svg",
+      "PackagePath": "staticwebassets\\icons\\game157.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game158.svg",
+      "PackagePath": "staticwebassets\\icons\\game158.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game159.svg",
+      "PackagePath": "staticwebassets\\icons\\game159.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game160.svg",
+      "PackagePath": "staticwebassets\\icons\\game160.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game161.svg",
+      "PackagePath": "staticwebassets\\icons\\game161.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game162.svg",
+      "PackagePath": "staticwebassets\\icons\\game162.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game163.svg",
+      "PackagePath": "staticwebassets\\icons\\game163.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game164.svg",
+      "PackagePath": "staticwebassets\\icons\\game164.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game165.svg",
+      "PackagePath": "staticwebassets\\icons\\game165.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game166.svg",
+      "PackagePath": "staticwebassets\\icons\\game166.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game167.svg",
+      "PackagePath": "staticwebassets\\icons\\game167.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game168.svg",
+      "PackagePath": "staticwebassets\\icons\\game168.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game169.svg",
+      "PackagePath": "staticwebassets\\icons\\game169.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game170.svg",
+      "PackagePath": "staticwebassets\\icons\\game170.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game171.svg",
+      "PackagePath": "staticwebassets\\icons\\game171.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game172.svg",
+      "PackagePath": "staticwebassets\\icons\\game172.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game173.svg",
+      "PackagePath": "staticwebassets\\icons\\game173.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game174.svg",
+      "PackagePath": "staticwebassets\\icons\\game174.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game175.svg",
+      "PackagePath": "staticwebassets\\icons\\game175.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game176.svg",
+      "PackagePath": "staticwebassets\\icons\\game176.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game177.svg",
+      "PackagePath": "staticwebassets\\icons\\game177.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game178.svg",
+      "PackagePath": "staticwebassets\\icons\\game178.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game179.svg",
+      "PackagePath": "staticwebassets\\icons\\game179.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game180.svg",
+      "PackagePath": "staticwebassets\\icons\\game180.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game181.svg",
+      "PackagePath": "staticwebassets\\icons\\game181.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game182.svg",
+      "PackagePath": "staticwebassets\\icons\\game182.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game184.svg",
+      "PackagePath": "staticwebassets\\icons\\game184.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game2.svg",
+      "PackagePath": "staticwebassets\\icons\\game2.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game3.svg",
+      "PackagePath": "staticwebassets\\icons\\game3.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game4.svg",
+      "PackagePath": "staticwebassets\\icons\\game4.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\game5.svg",
+      "PackagePath": "staticwebassets\\icons\\game5.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\notification\\free-bets.svg",
+      "PackagePath": "staticwebassets\\icons\\notification\\free-bets.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\icons\\notification\\free-spins.svg",
+      "PackagePath": "staticwebassets\\icons\\notification\\free-spins.svg"
+    },
+    {
+      "Id": "C:\\_Live Coding Session\\Portfolio projects\\Betslip\\wwwroot\\img\\favicon.png",
+      "PackagePath": "staticwebassets\\img\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Betslip.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Betslip.props",
+      "PackagePath": "build\\Betslip.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Betslip.props",
+      "PackagePath": "buildMultiTargeting\\Betslip.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Betslip.props",
+      "PackagePath": "buildTransitive\\Betslip.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

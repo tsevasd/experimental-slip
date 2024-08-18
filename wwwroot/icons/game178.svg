@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" version="1.1">
+   <defs>
+       <filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+           <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+       </filter>
+       <image id="image7" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADjUlEQVRoge2YWWgTQRjHv3VKmmqtR00RiQr1aosWD4pHQSmpD4IHWC3ig+CL9METfBFUUJ9UvBCqeCBaD7wKRdEHRQoqKF7VaFREBSutRqu12trdmfTvg4o0u9mZTZpEcf+wL8n3/b/vNzszmQmRK1euugmCQenh4RsQFXNsvXRfEUThMYhsoeY55AqMYAn4+qngsy5YxUTX0KwAnBHvekY0od38RRsjbUExkdHLkZ9EWkakW8+JA6RY0QA9OjrpkAuQbv2HANj7lCDKCCeCzvJqH1JHvU/LiGjRD4ltBUQVzY57saxju09Xh/CtZjARERoXZUFUHFD+3RAM4HUNaLs+yLJu544xEJVNMo8EAa6Xm+KNmUsh8tudQazKtayt+4og5r1LHoBY9gbtj4aYCz8YC14d6hmIncVJBGAAv3YP7yb2MeU1LsqCmHMw0emE143e5AIIBvDARZxhzDLfWL0EYvS3eCFSAyAYwK9ujemhlxaC1wTjgUgdgGCAEa6K6RMOZEMMP+4UIrUAYqBhtTN18zNWL1HapX5BpBiAAWL8F+gPxtp66r4i8COPlSA6hvlTDMAAse4lvhb4bH0/HO0LkXdSDnHgSYIAWZG4IHj4Bl6syZT6G2wZhP97fAOlBOA9Ha85hPc0iJkuSaYauq9INtKqAObDXKTvJiJPl5TUUrySeMZGWZSW+SFErZlTiHJPObKHVq8WF+fo/Hw8XdBrFyv3ZISrlKcU7zcjOj/GcTrL+g1gX0jeUkQjtvIw+MJSFQDNk7efuiZPJWx+YR/JQCj/Ev2ps/uAcaiccPOuPLDZS9rHOnQOHqliq3nON1Crf5L9lIpopPk3KPUZ8xjwutGLtlW54HUNaq+8OoTPX/srFf1d27i63G56Rsc7vpFpOXta6Pu1AKH2oTx4RSFl559D05beygW6dl+O/WXEtMPFdSd2BvEpQHmX34LXbkfHML80ns1Vmna/ZQ2gvfJK+3ICQbcHkLZwLXlKpFssIX+U3O+PTADgn8uINqstvpw9LdQ+v0xtYRMRSqfLTR85egPmGhz1MReRvrPYMsfJwjaCJfb1AxcTPErYNTD7fayTJ1rZAPBbd+QQlU3ouD80NsDW50kE6CEIXhNEy7QcU/4ZxiDy9CQD9BTE5EvR92p0zh4hy4uu5/69nm65AOmWC5BuJR8AzTcJ9TMpcnccEZ0l+rt3OVeu/jX9ACIzd6gtNl0PAAAAAElFTkSuQmCC"/>
+       <mask id="mask0">
+           <g filter="url(#alpha)">
+               <use xlink:href="#image7"/>
+           </g>
+       </mask>
+       <clipPath id="clip1">
+           <rect x="0" y="0" width="48" height="48"/>
+       </clipPath>
+       <g id="surface6" clip-path="url(#clip1)">
+           <rect x="0" y="0" width="48" height="48" style="fill:rgb(100%,31.372549%,19.607843%);fill-opacity:1;stroke:none;"/>
+       </g>
+   </defs>
+   <g id="surface1">
+       <use xlink:href="#surface6" mask="url(#mask0)"/>
+   </g>
+</svg>

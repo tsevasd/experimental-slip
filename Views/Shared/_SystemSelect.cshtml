@@ -1,0 +1,22 @@
+﻿@* systems select *@
+<div class="flex border-b border-light-300 font-bold mb-2">
+    <a class="inline-block px-4 py-2 cursor-pointer" :class="system === 4 ? 'text-brand border-b-4 border-brand -mb-px' : 'text-light-400'" @@click="system = systemChange(model.BetSlip, 4, system)">Singles</a>
+    <a class="inline-block px-4 py-2 cursor-pointer" :class="system === 1 ? 'text-brand border-b-4 border-brand -mb-px' : 'text-light-400'" @@click="system = systemChange(model.BetSlip, 1, system)">Combo</a>
+    <a class="inline-block px-4 py-2 cursor-pointer" :class="system === 3 ? 'text-brand border-b-4 border-brand -mb-px' : 'text-light-400'" @@click="system = systemChange(model.BetSlip, 3, system)">System</a>
+    <a class="inline-block p-2 text-light-400 ml-auto cursor-pointer opacity-70 transition hover:opacity-100" @@click="clearSlip">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" class="w-5 h-5">
+            <path class="fill-brand-dark" d="M321.7,81.799l-13.2-41.6C306.7,34.2,300.7,30,294.401,30h-76.802C211.3,30,205.3,34.2,203.5,40.199 l-13.2,41.6c-6.301,18.6-34.799,9.3-28.5-9.6l13.2-41.3C181,12.299,198.1,0,217.599,0h76.802C313.9,0,331,12.299,337,30.899 l13.2,41.3C356.499,91.099,328.001,100.699,321.7,81.799z" />
+            <path class="fill-light-300" d="M436,122H76c-8.699,0-15.601,7.5-15,16.199L62.199,152l26.4,318.9c1.8,23.099,21.301,41.1,44.7,41.1 h245.402c23.399,0,42.9-18.001,44.7-41.1l26.4-318.9L451,138.199C451.601,129.5,444.699,122,436,122z" />
+            <path style="fill:#8595ac" d="M451,138.199L423.401,470.9c-1.8,23.099-21.301,41.1-44.7,41.1H256V122h180 C444.699,122,451.601,129.5,451,138.199z" />
+            <g>
+                <path class="fill-brand" d="M436,62H76c-24.901,0-45,20.099-45,45v30c0,8.399,6.599,15,15,15h420c8.401,0,15-6.601,15-15v-30 C481,82.099,460.901,62,436,62z" />
+                <path class="fill-brand" d="M151,437V197c0-19.773,30-19.854,30,0v240C181,456.773,151,456.854,151,437z" />
+                <path class="fill-brand" d="M271,197v240c0,9.899-7.5,15-15,15s-15-5.101-15-15V197c0-9.901,7.5-15,15-15S271,187.099,271,197z" />
+                <path class="fill-brand" d="M331,437V197c0-19.773,30-19.854,30,0v240C361,456.773,331,456.854,331,437z" />
+            </g>
+        </svg>
+        @*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
+        </svg>*@
+    </a>
+</div>

@@ -1,0 +1,13 @@
+
+
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 48 48"
+    aria-labelledby="iconName"
+    role="presentation"
+  >
+  <g
+    ><circle fill="#ED69AB" cx="24" cy="24" r="5"></circle> <circle fill="#ED69AB" cx="6" cy="24" r="5"></circle>
+    <circle fill="#ED69AB" cx="42" cy="24" r="5"></circle
+  ></g>
+  </svg>

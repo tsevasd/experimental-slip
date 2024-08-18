@@ -1,0 +1,1124 @@
+{
+   "ViewModel":{
+   "LanguageId":1,
+   "WhiteLabelId":3,
+   "LiveWhitelabelId":12,
+   "CustomerId":0,
+   "UserId":0,
+   "ShopUserId":0,
+   "Ticket":0,
+   "Type":"",
+   "TypeIns":0,
+   "BetIdAuth":0,
+   "Proposal":false,
+   "IsOnlineAuth":false,
+   "ShowSystem":3,
+   "Amount":0.0,
+   "MaxWinAmount":79228162514264337593543950335.0,
+   "ErrorCode":"",
+   "ErrorDescription":"",
+   "AjaxCallForCheckOdds":false,
+   "FormData":{
+},
+   "SlipEventCollection":[],
+   "Combinations":[
+{
+   "Enabled":true,
+   "CounterLines":1,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":4.23575382037187,
+   "AverageMultiplierMax":4.23575382037187,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":3.2060,
+   "MaximumMultiplier":5.3357,
+   "MinimumMultpilierWithBonus":3.2060,
+   "MaximumMultiplierWithBonus":5.3357
+},
+{
+   "Enabled":true,
+   "CounterLines":2,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":7.83476437851304,
+   "AverageMultiplierMax":7.83476437851304,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":6.219640,
+   "MaximumMultiplier":10.351258,
+   "MinimumMultpilierWithBonus":6.219640,
+   "MaximumMultiplierWithBonus":10.351258
+},
+{
+   "Enabled":true,
+   "CounterLines":3,
+   "TotalLines":4,
+   "CombinationsProduced":1,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":14.4917612,
+   "AverageMultiplierMax":14.4917612,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":14.49176120,
+   "MaximumMultiplier":14.49176120,
+   "MinimumMultpilierWithBonus":14.49176120,
+   "MaximumMultiplierWithBonus":14.49176120
+}
+],
+   "BetSlip":{
+   "Combinations":[
+{
+   "CounterLines":1,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":4.23575382037187,
+   "AverageMultiplierMax":4.23575382037187,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":3.2060,
+   "MaximumMultiplierWithBonus":5.3357,
+   "MinimumMultpilier":3.2060,
+   "MaximumMultiplier":5.3357,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+},
+{
+   "CounterLines":2,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":7.83476437851304,
+   "AverageMultiplierMax":7.83476437851304,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":6.219640,
+   "MaximumMultiplierWithBonus":10.351258,
+   "MinimumMultpilier":6.219640,
+   "MaximumMultiplier":10.351258,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+},
+{
+   "CounterLines":3,
+   "TotalLines":4,
+   "CombinationsProduced":1,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":14.4917612,
+   "AverageMultiplierMax":14.4917612,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":14.49176120,
+   "MaximumMultiplierWithBonus":14.49176120,
+   "MinimumMultpilier":14.49176120,
+   "MaximumMultiplier":14.49176120,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+}
+],
+   "WhiteLabelId":3,
+   "LiveWhiteLabelId":12,
+   "SiteId":54,
+   "MinimumAccepted":1,
+   "GroupBonus":0.0,
+   "ErrorFlag":0,
+   "HasLive":false,
+   "MultiplesBets":1,
+   "NumberOfBankers":1,
+   "NumberOfNoBankers":3,
+   "IsFreeBet":false,
+   "TotalOdds":14.49176120,
+   "System":0,
+   "SystemClicked":true,
+   "Events":[
+{
+   "SportEventId":4919135,
+   "Banker":true,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919137,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":2.29,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":true,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4215
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919137,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":601,
+   "Name":"ENGLAND"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":1,
+   "Name":"England Premier League"
+},
+   "MatchDescription":"Leicester - Leeds",
+   "Team1":"Leicester",
+   "Team2":"Leeds",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919137,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":2.29,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Leicester",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4919060,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919060,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":1.40,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.6938
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919060,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":56,
+   "Name":"BRAZIL"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":1017,
+   "Name":"Brazil Serie A"
+},
+   "MatchDescription":"Sao Paulo - Coritiba FC PR",
+   "Team1":"Sao Paulo",
+   "Team2":"Coritiba FC PR",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919060,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":1.40,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Sao Paulo",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4928144,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4928144,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":1.94,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4920
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4928144,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":29,
+   "Name":"USA"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":577,
+   "Name":"USA MLS"
+},
+   "MatchDescription":"Philadelphia Union - FC Cincinnati",
+   "Team1":"Philadelphia Union",
+   "Team2":"FC Cincinnati",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4928144,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":1.94,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Philadelphia Union",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4919072,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919072,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":2.33,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4011
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919072,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":56,
+   "Name":"BRAZIL"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":2679,
+   "Name":"Brazil Serie B"
+},
+   "MatchDescription":"AA Ponte Preta SP - CS Alagoano",
+   "Team1":"AA Ponte Preta SP",
+   "Team2":"CS Alagoano",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919072,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":2.33,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" AA Ponte Preta SP",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+]
+},
+   "BetResponse":{
+   "ErrorCode":0,
+   "ChangedOdds":[
+],
+   "NotValidEvents":[
+],
+   "BetReferences":[
+],
+   "CombineBetReference":0,
+   "BetSlip":{
+   "Combinations":[
+{
+   "CounterLines":1,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":4.23575382037187,
+   "AverageMultiplierMax":4.23575382037187,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":3.2060,
+   "MaximumMultiplierWithBonus":5.3357,
+   "MinimumMultpilier":3.2060,
+   "MaximumMultiplier":5.3357,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+},
+{
+   "CounterLines":2,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":7.83476437851304,
+   "AverageMultiplierMax":7.83476437851304,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":6.219640,
+   "MaximumMultiplierWithBonus":10.351258,
+   "MinimumMultpilier":6.219640,
+   "MaximumMultiplier":10.351258,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+},
+{
+   "CounterLines":3,
+   "TotalLines":4,
+   "CombinationsProduced":1,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":14.4917612,
+   "AverageMultiplierMax":14.4917612,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "MinimumMultpilierWithBonus":14.49176120,
+   "MaximumMultiplierWithBonus":14.49176120,
+   "MinimumMultpilier":14.49176120,
+   "MaximumMultiplier":14.49176120,
+   "Amount":0.0,
+   "AmountPerColumn":0.0,
+   "Enabled":true
+}
+],
+   "WhiteLabelId":3,
+   "LiveWhiteLabelId":12,
+   "SiteId":54,
+   "MinimumAccepted":1,
+   "GroupBonus":0.0,
+   "ErrorFlag":0,
+   "HasLive":false,
+   "MultiplesBets":1,
+   "NumberOfBankers":1,
+   "NumberOfNoBankers":3,
+   "IsFreeBet":false,
+   "TotalOdds":14.49176120,
+   "System":0,
+   "SystemClicked":true,
+   "Events":[
+{
+   "SportEventId":4919137,
+   "Banker":true,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919137,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":2.29,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":true,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4215
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919137,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":601,
+   "Name":"ENGLAND"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":1,
+   "Name":"England Premier League"
+},
+   "MatchDescription":"Leicester - Leeds",
+   "Team1":"Leicester",
+   "Team2":"Leeds",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919137,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":2.29,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Leicester",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4919060,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919060,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":1.40,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.6938
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919060,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":56,
+   "Name":"BRAZIL"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":1017,
+   "Name":"Brazil Serie A"
+},
+   "MatchDescription":"Sao Paulo - Coritiba FC PR",
+   "Team1":"Sao Paulo",
+   "Team2":"Coritiba FC PR",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919060,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":1.40,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Sao Paulo",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4928144,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4928144,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":1.94,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4920
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4928144,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":29,
+   "Name":"USA"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":577,
+   "Name":"USA MLS"
+},
+   "MatchDescription":"Philadelphia Union - FC Cincinnati",
+   "Team1":"Philadelphia Union",
+   "Team2":"FC Cincinnati",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4928144,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":1.94,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" Philadelphia Union",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+},
+{
+   "SportEventId":4919072,
+   "Banker":false,
+   "EventScoreMetaInfo":"",
+   "Selections":[
+{
+   "SportEventId":4919072,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "IsLive":false,
+   "ChangeSpecialBetValueInSlip":false,
+   "OddValue":2.33,
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "Banker":false,
+   "Minimum":1,
+   "IsCustomBetSelection":false,
+   "HasChanges":false,
+   "Probability":0.4011
+}
+],
+   "SlipEventLocalized":{
+   "SportEventId":4919072,
+   "EventCode":1,
+   "Game":{
+   "Id":1,
+   "Name":"Soccer"
+},
+   "Country":{
+   "Id":56,
+   "Name":"BRAZIL"
+},
+   "Group":{
+   "Id":50342,
+   "Name":"MATCHES - 1X2 and other odds",
+   "AntePostMarkets":0,
+   "MainType":0
+},
+   "League":{
+   "Id":2679,
+   "Name":"Brazil Serie B"
+},
+   "MatchDescription":"AA Ponte Preta SP - CS Alagoano",
+   "Team1":"AA Ponte Preta SP",
+   "Team2":"CS Alagoano",
+   "IsInvalid":false,
+   "SelectionCollection":{
+   "1_1_0_0":{
+   "GameId":1,
+   "SportEventId":4919072,
+   "MarketId":1,
+   "OddId":1,
+   "SpecialBetValueId":1,
+   "ChangeSpecialBetValueInSlip":false,
+   "SpecialBetValue":"",
+   "Symbol":"1",
+   "MarketName":"1X2",
+   "MarketDescription":"Bet on the final result of the match - Home(1), draw (X) or Away(2) (Football: count result at the 90 minutes including injury time, if not otherwise stated - Basketball: the options are 1 and 2 , Extra time counts\n",
+   "OddName":"1",
+   "OddDescription":"Full Time Home 1",
+   "SpecialValue":0.0,
+   "TeamId":0,
+   "PlayerId":0,
+   "TeamOrder":null,
+   "PlayerName":"",
+   "MarketNameWithSpecialValue":"1X2",
+   "OddNameWithSpecialValue":"1",
+   "OddNewDescriptionWithSpecialValue":"Full Time Home 1",
+   "SymbolWithSpecialValue":"1",
+   "OddDescriptionWithSpecialValue":"Full Time Home 1",
+   "OddValue":2.33,
+   "MarketNameFromTemplate":"1X2",
+   "OddNameFromTemplate":" AA Ponte Preta SP",
+   "IsCustomBetSelection":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+},
+   "IsActive":true,
+   "Results":[
+],
+   "ResultsString":"",
+   "LanguageId":1
+},
+   "IsCustomBetEvent":false,
+   "CustomBetOddValue":0.0,
+   "CustomBetProbability":0.0
+}
+]
+},
+   "RiskClientResponse":{
+   "AuthorisationMaxEventAmount":0.0,
+   "AuthorisationSelectionMultipe":0.0,
+   "AuthorisationSportEventId":0,
+   "AuthorisationSelection":0,
+   "Status":0
+},
+   "TotalBetAmount":0.0,
+   "RiskManagerResponse":{
+   "AuthorisationRequestId":0,
+   "ProposedAmount":0.0,
+   "CheckForNewAuthorisation":false,
+   "ErrorCode":0
+},
+   "BookBetId":0,
+   "PossibleDelayBeforeAuth":0,
+   "RequiresAuthorisation":false,
+   "ErrorMessage":"",
+   "System":3,
+   "CheckHash":0,
+   "Repeat":0,
+   "PlacingBet":false,
+   "ResponseStatus":null
+},
+   "BookBet":{
+   "MaxDateValid":"0001-01-01T00:00:00",
+   "MinDateValid":"0001-01-01T00:00:00",
+   "TotalAmount":0.0,
+   "SessionSystem":0,
+   "SiteId":0,
+   "Description":null,
+   "StartShow":"0001-01-01T00:00:00",
+   "EndShow":"0001-01-01T00:00:00",
+   "Active":0,
+   "BookBetGroupId":0,
+   "GroupTitle":null,
+   "GroupDescription":null,
+   "BookBetEvents":[
+],
+   "BookBetDetails":[
+],
+   "BookBetId":0
+},
+   "BetSlipCheck":"4919137bnks14919137_1_1_2.29_0.0_1_0.0n2.291C4919060bnk14919060_1_1_1.40_0.0_1_0.0n1.401C4928144bnk14928144_1_1_1.94_0.0_1_0.0n1.941C4919072bnk14919072_1_1_2.33_0.0_1_0.0n2.331C"
+},
+   "PostModel":{
+   "WhiteLabelId":3,
+   "MultiplesBets":1,
+   "MinimumAccepted":1,
+   "NumberOfBankers":1,
+   "NumberOfNoBankers":3,
+   "EventsCounter":4,
+   "BetKeyForAuthorsation":null,
+   "Proposal":false,
+   "AnOddIsChanged":false,
+   "TotalBetAmount":0.0,
+   "BetMultipleAmount":0.0,
+   "BetMultipleAmountTotal":0.0,
+   "BetTotalColAmount":0.0,
+   "BetTotalDividedColAmount":0.0,
+   "BetTotalDividedBetAmount":0.0,
+   "MaxWinAmount":79228162514264337593543950335.0,
+   "AuthCode":null,
+   "ShowSystem":3,
+   "FreeBet":false,
+   "Combinations":[
+{
+   "Enabled":false,
+   "CounterLines":1,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":4.23575382037187,
+   "AverageMultiplierMax":4.23575382037187,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":3.2060,
+   "MaximumMultiplier":5.3357,
+   "MinimumMultpilierWithBonus":3.2060,
+   "MaximumMultiplierWithBonus":5.3357
+},
+{
+   "Enabled":false,
+   "CounterLines":2,
+   "TotalLines":4,
+   "CombinationsProduced":3,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":7.83476437851304,
+   "AverageMultiplierMax":7.83476437851304,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":6.219640,
+   "MaximumMultiplier":10.351258,
+   "MinimumMultpilierWithBonus":6.219640,
+   "MaximumMultiplierWithBonus":10.351258
+},
+{
+   "Enabled":false,
+   "CounterLines":3,
+   "TotalLines":4,
+   "CombinationsProduced":1,
+   "MultiplesSelections":1,
+   "AverageMultiplierMin":14.4917612,
+   "AverageMultiplierMax":14.4917612,
+   "BonusMin":0.0,
+   "BonusMax":0.0,
+   "BetAmount":0.0,
+   "BetColAmount":0.0,
+   "BetMulAmount":0.0,
+   "BetAmountView":0.0,
+   "BetColAmountView":0.0,
+   "BetMulAmountView":0.0,
+   "MinimumMultiplier":14.49176120,
+   "MaximumMultiplier":14.49176120,
+   "MinimumMultpilierWithBonus":14.49176120,
+   "MaximumMultiplierWithBonus":14.49176120
+}
+],
+   "LiveBets":[
+],
+   "BookBet":{
+   "MaxDateValid":"0001-01-01T00:00:00",
+   "MinDateValid":"0001-01-01T00:00:00",
+   "TotalAmount":0.0,
+   "SessionSystem":0,
+   "SiteId":0,
+   "Description":null,
+   "StartShow":"0001-01-01T00:00:00",
+   "EndShow":"0001-01-01T00:00:00",
+   "Active":0,
+   "BookBetGroupId":0,
+   "GroupTitle":null,
+   "GroupDescription":null,
+   "BookBetEvents":[
+],
+   "BookBetDetails":[
+],
+   "BookBetId":0
+},
+   "HasLive":false
+},
+   "IsAuthenticated":false,
+   "IsRepeated":false,
+   "CheckHash":0
+}
